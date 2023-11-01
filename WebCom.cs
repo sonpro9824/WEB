@@ -8,14 +8,16 @@ namespace WEB
 {
     internal class Webcom
     {
-        private int count = 1;
+        private int count = 0;
+     
         private string title = "Welcome home!";
-        private string label_text1 = string.Empty;
-        private string label_text2 = string.Empty;
-        private string label_text3 = string.Empty;
-        private string label_text4 = string.Empty;
-        private string label_text5 = string.Empty;
+        private string label_text1 = "Option 1";
+        private string label_text2 = "Option 2";
+        private string label_text3 = "Option 3";
+        private string label_text4 = "Option 4";
+        private string label_text5 = "Option 5";
         private Webcom next = null;
+        private bool bookMark = false;
         public Webcom()
         {
 
@@ -39,6 +41,7 @@ namespace WEB
         public int Count { get => count; set => count = value; }
         public string Title { get => title; set => title = value; }
         public Webcom Next { get => next; set => next = value; }
+        public bool BookMark { get => bookMark; set => bookMark = value; }
     }
     class Stack
     {
@@ -71,7 +74,7 @@ namespace WEB
                 return null;
             }
             Webcom webcomponent = Head;
-            Head = webcomponent.Next;
+            Head = Head.Next;
             return webcomponent;
         }
         /// <summary>

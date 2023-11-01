@@ -13,17 +13,51 @@ namespace WEB
     public partial class Form2 : Form
     {
         Webcom Webcom = new Webcom();
-
+        Stack back = new Stack();
+        Stack next = new Stack();
         internal Webcom Webcom1 { get => Webcom; set => Webcom = value; }
-
+        /// <summary>
+        /// push title va number
+        /// </summary>
+        private void pushBack()
+        {
+            Webcom webcom = new Webcom();
+            webcom.Count = Class1.count;
+            webcom.Title = label1.Text;
+            //label7.Text += webcom.Count.ToString();
+            back.Push(webcom);
+        }
+        private void pushNext()
+        {
+            Webcom webcom = new Webcom();
+            webcom.Count = Class1.count;
+            webcom.Title = label1.Text;
+            //label7.Text += webcom.Count.ToString();
+            next.Push(webcom);
+        }
+        private string Createrandom()
+        {
+            Random random = new Random();
+            int n = random.Next(10) + 1;
+            Randomstring result = new Randomstring();
+            return result.GenerateRandomString(n);
+            /*RandomStringGenerator generator = new RandomStringGenerator(length);
+            string randomString = generator.GenerateRandomString();*/
+        }
+        private void CreaterandomOption()
+        {
+            label2.Text = Createrandom();
+            label3.Text = Createrandom();
+            label4.Text = Createrandom();
+            label5.Text = Createrandom();
+            label6.Text = Createrandom();
+        }
         public Form2()
         {
             InitializeComponent();
-            label1.Text = Webcom.Title;
-            label2.Text = Webcom.Label_text1;
-            label3.Text = Webcom.Label_text2;
-            label4.Text = Webcom.Label_text3;
-            label5.Text = Webcom.Label_text4;
+            label1.Text = "Web title: " + Webcom.Title;
+            CreaterandomOption();
+            label7.Text = Class1.count.ToString();
         }
         /// <summary>
         /// An di cac option
@@ -47,7 +81,6 @@ namespace WEB
             label5.Visible = true;
             label6.Visible = true;
         }
-    
         /// <summary>
         /// An title
         /// </summary>
@@ -64,9 +97,10 @@ namespace WEB
         }
         private void Form2_Load(object sender, EventArgs e)
         {
+            //Class1.count++;
             button_bookmark.BackColor = Color.White;
-            label7.Text = Webcom1.Count.ToString();
             Hideoption();
+            //Class1.count++;
         }
         private void button_bookmark_Click(object sender, EventArgs e)
         {
@@ -77,13 +111,19 @@ namespace WEB
             else
                 button_bookmark.BackColor = Color.White;
         }
-
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
+           
             if (e.KeyCode == Keys.Enter)
             {
+                pushBack();
                 Displayoption();
-                HideTitle();
+                label1.Text = "Finding resutl for: " + textBox1.Text;
+                //textBox1.Clear();
+                Class1.count++;
+                Webcom.Count = Class1.count;
+                label7.Text =  Class1.count.ToString();
+                EmptyNext();
             }
         }
 
@@ -94,7 +134,148 @@ namespace WEB
 
         private void label2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = label2.Text;
+            pushBack();
+            Class1.count++;
+            //textBox1.Text = label2.Text;
+            label1.Text = "Title: " + label2.Text;
+            Webcom.Count = Class1.count;
+            CreaterandomOption();
+            label7.Text = Class1.count.ToString();
+            EmptyNext();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void label6_Click(object sender, EventArgs e)
+        {
+            pushBack();
+            Class1.count++;
+            //textBox1.Text = label6.Text;
+            label1.Text = "Title: " + label6.Text;
+            CreaterandomOption();
+            Webcom.Count = Class1.count;
+            label7.Text = Class1.count.ToString();
+            EmptyNext();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+            pushBack();
+            Class1.count++;
+            //textBox1.Text = label3.Text;
+            label1.Text = "Title: " + label3.Text;
+            CreaterandomOption();
+            Webcom.Count = Class1.count;                      
+            label7.Text = Class1.count.ToString();
+            EmptyNext();
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+            pushBack();
+            Class1.count++;
+            //textBox1.Text = label4.Text;
+            label1.Text = "Title: " + label4.Text;
+            CreaterandomOption();
+            Webcom.Count = Class1.count;
+            label7.Text = Class1.count.ToString();
+            EmptyNext();
+        }
+        private void label5_Click(object sender, EventArgs e)
+        {
+            pushBack();
+            Class1.count++;
+            //textBox1.Text = label5.Text;
+            label1.Text = "Title: " + label5.Text;
+            CreaterandomOption();
+            Webcom.Count = Class1.count;
+            label7.Text = Class1.count.ToString();
+            EmptyNext();
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button_reload_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button_bookmark_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        private void label7_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        private void button_back_Click(object sender, EventArgs e)
+        {
+            if (back.isEmpty())
+            {
+                MessageBox.Show("Back is empty","Warning!");
+                return;
+            }
+            //MessageBox.Show("Tao ne");
+            Webcom webcom = new Webcom();
+            webcom.Count = Convert.ToInt32(label7.Text);
+            webcom.Title = label1.Text;
+            //label7.Text += webcom.Count.ToString();
+            next.Push(webcom);
+            // day vo next
+            Webcom web = back.Pop();
+            label1.Text= web.Title;
+            label7.Text = web.Count.ToString();
+            if (label1.Text == "Web title: Welcome home!")
+            {
+                Hideoption();
+            }
+            else
+            {
+                Displayoption();
+            }
+            // lui ve
+        }
+
+        private void button_next_Click(object sender, EventArgs e)
+        {
+            if (next.isEmpty())
+            {
+                MessageBox.Show("Next is empty","Warning!");
+                return;
+            }
+            Webcom webcom = new Webcom();
+            webcom.Count = Convert.ToInt32(label7.Text);
+            webcom.Title = label1.Text;
+            webcom.
+            //label7.Text += webcom.Count.ToString();
+            back.Push(webcom);
+            Webcom web = next.Pop();
+            label1.Text = web.Title;
+            label7.Text = web.Count.ToString();
+            if (label1.Text == "Web title: Welcome home!")
+            {
+                Hideoption();
+            }
+            else
+            {
+                Displayoption();
+            }
+        }
+        private void EmptyNext()
+        {
+            while (!next.isEmpty())
+            {
+                next.Pop();
+            }
+        }
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -16,7 +16,6 @@ namespace WEB
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -37,6 +36,15 @@ namespace WEB
         private void iconButton2_Click(object sender, EventArgs e)
         {
             Addtab();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {   
+           
+        }
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
