@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,11 +20,28 @@ namespace WEB
         /// <summary>
         /// push title va number
         /// </summary>
+        private void GanLabel(ref Webcom webcom)
+        {
+            webcom.Label_text1 = label2.Text;
+            webcom.Label_text2 = label3.Text;
+            webcom.Label_text3 = label4.Text;
+            webcom.Label_text4 = label5.Text;
+            webcom.Label_text5 = label6.Text;
+        }
+        private void HoantraLabel(Webcom webcom)
+        {
+            label2.Text = webcom.Label_text1;
+            label3.Text = webcom.Label_text2;
+            label4.Text = webcom.Label_text3;   
+            label5.Text = webcom.Label_text4;
+            label6.Text = webcom.Label_text5;
+        }
         private void pushBack()
         {
             Webcom webcom = new Webcom();
             webcom.Count = Class1.count;
             webcom.Title = label1.Text;
+            GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
             back.Push(webcom);
         }
@@ -32,6 +50,7 @@ namespace WEB
             Webcom webcom = new Webcom();
             webcom.Count = Class1.count;
             webcom.Title = label1.Text;
+            GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
             next.Push(webcom);
         }
@@ -41,8 +60,6 @@ namespace WEB
             int n = random.Next(10) + 1;
             Randomstring result = new Randomstring();
             return result.GenerateRandomString(n);
-            /*RandomStringGenerator generator = new RandomStringGenerator(length);
-            string randomString = generator.GenerateRandomString();*/
         }
         private void CreaterandomOption()
         {
@@ -97,10 +114,8 @@ namespace WEB
         }
         private void Form2_Load(object sender, EventArgs e)
         {
-            //Class1.count++;
             button_bookmark.BackColor = Color.White;
             Hideoption();
-            //Class1.count++;
         }
         private void button_bookmark_Click(object sender, EventArgs e)
         {
@@ -224,12 +239,14 @@ namespace WEB
             Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;
+            GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
             next.Push(webcom);
             // day vo next
             Webcom web = back.Pop();
             label1.Text= web.Title;
             label7.Text = web.Count.ToString();
+            HoantraLabel(web);
             if (label1.Text == "Web title: Welcome home!")
             {
                 Hideoption();
@@ -251,10 +268,11 @@ namespace WEB
             Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;
-            webcom.
+            GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
             back.Push(webcom);
             Webcom web = next.Pop();
+            HoantraLabel(web);
             label1.Text = web.Title;
             label7.Text = web.Count.ToString();
             if (label1.Text == "Web title: Welcome home!")
