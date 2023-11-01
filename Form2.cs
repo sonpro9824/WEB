@@ -39,7 +39,7 @@ namespace WEB
         private void pushBack()
         {
             Webcom webcom = new Webcom();
-            webcom.Count = Class1.count;
+            webcom.Count = Pagenumber.count;
             webcom.Title = label1.Text;
             GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
@@ -48,7 +48,7 @@ namespace WEB
         private void pushNext()
         {
             Webcom webcom = new Webcom();
-            webcom.Count = Class1.count;
+            webcom.Count = Pagenumber.count;
             webcom.Title = label1.Text;
             GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
@@ -74,7 +74,7 @@ namespace WEB
             InitializeComponent();
             label1.Text = "Web title: " + Webcom.Title;
             CreaterandomOption();
-            label7.Text = Class1.count.ToString();
+            label7.Text = Pagenumber.count.ToString();
         }
         /// <summary>
         /// An di cac option
@@ -135,9 +135,9 @@ namespace WEB
                 Displayoption();
                 label1.Text = "Finding resutl for: " + textBox1.Text;
                 //textBox1.Clear();
-                Class1.count++;
-                Webcom.Count = Class1.count;
-                label7.Text =  Class1.count.ToString();
+                Pagenumber.count++;
+                Webcom.Count = Pagenumber.count;
+                label7.Text =  Pagenumber.count.ToString();
                 EmptyNext();
             }
         }
@@ -150,12 +150,12 @@ namespace WEB
         private void label2_Click(object sender, EventArgs e)
         {
             pushBack();
-            Class1.count++;
+            Pagenumber.count++;
             //textBox1.Text = label2.Text;
             label1.Text = "Title: " + label2.Text;
-            Webcom.Count = Class1.count;
+            Webcom.Count = Pagenumber.count;
             CreaterandomOption();
-            label7.Text = Class1.count.ToString();
+            label7.Text = Pagenumber.count.ToString();
             EmptyNext();
         }
 
@@ -166,12 +166,12 @@ namespace WEB
         private void label6_Click(object sender, EventArgs e)
         {
             pushBack();
-            Class1.count++;
+            Pagenumber.count++;
             //textBox1.Text = label6.Text;
             label1.Text = "Title: " + label6.Text;
             CreaterandomOption();
-            Webcom.Count = Class1.count;
-            label7.Text = Class1.count.ToString();
+            Webcom.Count = Pagenumber.count;
+            label7.Text = Pagenumber.count.ToString();
             EmptyNext();
         }
 
@@ -182,34 +182,34 @@ namespace WEB
         private void label3_Click(object sender, EventArgs e)
         {
             pushBack();
-            Class1.count++;
+            Pagenumber.count++;
             //textBox1.Text = label3.Text;
             label1.Text = "Title: " + label3.Text;
             CreaterandomOption();
-            Webcom.Count = Class1.count;                      
-            label7.Text = Class1.count.ToString();
+            Webcom.Count = Pagenumber.count;                      
+            label7.Text = Pagenumber.count.ToString();
             EmptyNext();
         }
         private void label4_Click(object sender, EventArgs e)
         {
             pushBack();
-            Class1.count++;
+            Pagenumber.count++;
             //textBox1.Text = label4.Text;
             label1.Text = "Title: " + label4.Text;
             CreaterandomOption();
-            Webcom.Count = Class1.count;
-            label7.Text = Class1.count.ToString();
+            Webcom.Count = Pagenumber.count;
+            label7.Text = Pagenumber.count.ToString();
             EmptyNext();
         }
         private void label5_Click(object sender, EventArgs e)
         {
             pushBack();
-            Class1.count++;
+            Pagenumber.count++;
             //textBox1.Text = label5.Text;
             label1.Text = "Title: " + label5.Text;
             CreaterandomOption();
-            Webcom.Count = Class1.count;
-            label7.Text = Class1.count.ToString();
+            Webcom.Count = Pagenumber.count;
+            label7.Text = Pagenumber.count.ToString();
             EmptyNext();
         }
         private void label1_Click(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WEB
 {
-    internal class Class1
+    internal class Pagenumber
     {
         public static int count = 0;
     }
