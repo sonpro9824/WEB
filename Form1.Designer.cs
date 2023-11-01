@@ -28,70 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button_back = new FontAwesome.Sharp.IconButton();
-            this.button_next = new FontAwesome.Sharp.IconButton();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
-            // panel1
+            // tabControl1
             // 
-            this.panel1.Location = new System.Drawing.Point(2, 62);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(138, 376);
-            this.panel1.TabIndex = 0;
+            this.tabControl1.Location = new System.Drawing.Point(-2, 29);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(804, 422);
+            this.tabControl1.TabIndex = 0;
             // 
-            // panel2
+            // iconButton2
             // 
-            this.panel2.Location = new System.Drawing.Point(161, 62);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(617, 376);
-            this.panel2.TabIndex = 1;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.Black;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.Location = new System.Drawing.Point(2, 0);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(107, 28);
+            this.iconButton2.TabIndex = 1;
+            this.iconButton2.Text = "Add new tab";
+            this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
-            // button_back
+            // iconButton3
             // 
-            this.button_back.IconChar = FontAwesome.Sharp.IconChar.ArrowCircleLeft;
-            this.button_back.IconColor = System.Drawing.Color.Black;
-            this.button_back.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_back.Location = new System.Drawing.Point(12, 5);
-            this.button_back.Name = "button_back";
-            this.button_back.Size = new System.Drawing.Size(63, 51);
-            this.button_back.TabIndex = 0;
-            this.button_back.UseVisualStyleBackColor = true;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton3.IconColor = System.Drawing.Color.Black;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.Location = new System.Drawing.Point(106, 0);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Size = new System.Drawing.Size(107, 28);
+            this.iconButton3.TabIndex = 2;
+            this.iconButton3.Text = "History";
+            this.iconButton3.UseVisualStyleBackColor = true;
             // 
-            // button_next
+            // iconButton4
             // 
-            this.button_next.IconChar = FontAwesome.Sharp.IconChar.ArrowRightRotate;
-            this.button_next.IconColor = System.Drawing.Color.Black;
-            this.button_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_next.Location = new System.Drawing.Point(81, 5);
-            this.button_next.Name = "button_next";
-            this.button_next.Size = new System.Drawing.Size(63, 51);
-            this.button_next.TabIndex = 2;
-            this.button_next.Text = "iconButton2";
-            this.button_next.UseVisualStyleBackColor = true;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton4.IconColor = System.Drawing.Color.Black;
+            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton4.Location = new System.Drawing.Point(209, 0);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Size = new System.Drawing.Size(107, 28);
+            this.iconButton4.TabIndex = 3;
+            this.iconButton4.Text = "Favorite";
+            this.iconButton4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button_next);
-            this.Controls.Add(this.button_back);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.iconButton4);
+            this.Controls.Add(this.iconButton3);
+            this.Controls.Add(this.iconButton2);
+            this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Web";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private FontAwesome.Sharp.IconButton button_back;
-        private FontAwesome.Sharp.IconButton button_next;
+        private System.Windows.Forms.TabControl tabControl1;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconButton4;
     }
 }
 
