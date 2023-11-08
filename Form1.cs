@@ -58,12 +58,28 @@ namespace WEB
         }
         private void iconButton3_Click(object sender, EventArgs e)
         {
-
+            Form3 form3 = new Form3();
+            form3.Text = "History";
+            TabPage tabPage = new TabPage { Text = "History" };
+            tabPage.BorderStyle = BorderStyle.Fixed3D;
+            tabControl1.TabPages.Add(tabPage);
+            form3.TopLevel = false;
+            form3.Parent = tabPage;
+            form3.Show();
+            form3.Dock = DockStyle.Fill;
+            
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4();
+            form4.Text = "Favorite";
+            form4.ShowDialog();
         }
     }
 }

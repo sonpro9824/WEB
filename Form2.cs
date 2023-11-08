@@ -30,6 +30,7 @@ namespace WEB
             webcom.Label_text3 = label4.Text;
             webcom.Label_text4 = label5.Text;
             webcom.Label_text5 = label6.Text;
+            webcom.BookMark = Webcom.BookMark;
         }
         private void HoantraLabel(Webcom webcom)
         {
@@ -38,6 +39,7 @@ namespace WEB
             label4.Text = webcom.Label_text3;
             label5.Text = webcom.Label_text4;
             label6.Text = webcom.Label_text5;
+            Webcom.BookMark = webcom.BookMark;
         }
         /* private void pushBack()
          {
@@ -60,25 +62,58 @@ namespace WEB
              webcom1.Count = webcom.Count;
              HisoryList.historyControl.AddHistory(webcom1);
          }*/
+
+        private void checkBookMark()
+        {
+            if(Webcom.BookMark==true)
+            {
+                button_bookmark.BackColor = Color.Yellow;
+            }
+            else
+            {
+                button_bookmark.BackColor = Color.White;
+            }
+        }
+
+        private void addHis()
+        {
+            // add lich su
+            Webcom webcom1 = new Webcom();
+            webcom1.Title = label1.Text;
+            webcom1.Label_text1 = label2.Text;
+            //MessageBox.Show(webcom1.Title);
+            webcom1.Label_text2 = label3.Text;
+            webcom1.Label_text3 = label4.Text   ;
+            webcom1.Label_text4 = label5.Text;
+            webcom1.Label_text5 = label6.Text;
+            webcom1.Count = Convert.ToInt32(label7.Text);
+            HisoryList.historyControl.AddHistory(webcom1);
+        }
+        private void addFav()
+        {
+            // add lich su
+            Webcom webcom1 = new Webcom();
+            webcom1.Title = label1.Text;
+            webcom1.Label_text1 = label2.Text;
+            //MessageBox.Show(webcom1.Title);
+            webcom1.Label_text2 = label3.Text;
+            webcom1.Label_text3 = label4.Text;
+            webcom1.Label_text4 = label5.Text;
+            webcom1.Label_text5 = label6.Text;
+            webcom1.Count = Convert.ToInt32(label7.Text);
+            Fav.fav.AddHistory(webcom1);
+        }
         private void pushBack()
         {
             Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;
+            webcom.BookMark = Webcom.BookMark;
             GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
             back.Push(webcom);
-            // add lich su
 
-            Webcom webcom1 = new Webcom();
-            webcom1.Title = webcom.Title;
-            webcom1.Label_text1 = webcom.Label_text1;
-            webcom1.Label_text2 = webcom.Label_text2;
-            webcom1.Label_text3 = webcom.Label_text3;
-            webcom1.Label_text4 = webcom.Label_text4;
-            webcom1.Label_text5 = webcom.Label_text5;
-            webcom1.Count = webcom.Count;
-            HisoryList.historyControl.AddHistory(webcom1);
+            
         }
         private void pushNext()
         {
@@ -106,6 +141,7 @@ namespace WEB
         }
         public Form2(TruyenData truyenData)
         {
+            
             InitializeComponent();
             label1.Text = "Web title: " + Webcom.Title;
             CreaterandomOption();
@@ -139,7 +175,9 @@ namespace WEB
         {
             button_bookmark.BackColor = Color.White;
             truyenDataform2(label1.Text);
+            addHis();
             Hideoption();
+
         }
         private void button_bookmark_Click(object sender, EventArgs e)
         {
@@ -169,6 +207,7 @@ namespace WEB
                 pushBack();
                 CreaterandomOption();
                 Displayoption();
+                Webcom.BookMark = false;
                 label1.Text = string.Empty;
                 label1.Text = "Finding resutl for: " + textBox1.Text;
                 //getTitle(label1.Text);
@@ -179,7 +218,7 @@ namespace WEB
                 Webcom.Count = Pagenumber.count;
                 label7.Text = Pagenumber.count.ToString();
                 EmptyNext();
-
+                addHis();
             }
         }
 
@@ -191,6 +230,7 @@ namespace WEB
         private void label2_Click(object sender, EventArgs e)
         {
             pushBack();
+            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label2.Text;
             label1.Text = "Title: " + label2.Text;
@@ -199,6 +239,7 @@ namespace WEB
             CreaterandomOption();
             label7.Text = Pagenumber.count.ToString();
             EmptyNext();
+            addHis() ;
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -207,6 +248,7 @@ namespace WEB
         private void label6_Click(object sender, EventArgs e)
         {
             pushBack();
+            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label6.Text;
             label1.Text = "Title: " + label6.Text;
@@ -215,6 +257,7 @@ namespace WEB
             Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
             EmptyNext();
+            addHis() ;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -224,6 +267,7 @@ namespace WEB
         private void label3_Click(object sender, EventArgs e)
         {
             pushBack();
+            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label3.Text;
             label1.Text = "Title: " + label3.Text;
@@ -232,10 +276,12 @@ namespace WEB
             Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
             EmptyNext();
+            addHis() ;
         }
         private void label4_Click(object sender, EventArgs e)
         {
             pushBack();
+            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label4.Text;
             label1.Text = "Title: " + label4.Text;
@@ -244,10 +290,12 @@ namespace WEB
             Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
             EmptyNext();
+            addHis() ;
         }
         private void label5_Click(object sender, EventArgs e)
         {
             pushBack();
+            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label5.Text;
             label1.Text = "Title: " + label5.Text;
@@ -256,6 +304,7 @@ namespace WEB
             Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
             EmptyNext();
+            addHis() ;
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -267,7 +316,25 @@ namespace WEB
         }
         private void button_bookmark_Click_1(object sender, EventArgs e)
         {
+            if(button_bookmark.BackColor == Color.White)
+            {
+                button_bookmark.BackColor = Color.Yellow;
+                Webcom.BookMark = true;
+            }
+            else
+            {
+                button_bookmark.BackColor = Color.White;
+                Webcom.BookMark = false;
+            }
+            if(Webcom.BookMark==true)
+            {
 
+                addFav();
+            }
+            else
+            {
+
+            }
         }
         private void label7_Click_1(object sender, EventArgs e)
         {
@@ -301,6 +368,7 @@ namespace WEB
             {
                 Displayoption();
             }
+            checkBookMark();
             // lui ve
         }
 
@@ -330,6 +398,7 @@ namespace WEB
             {
                 Displayoption();
             }
+            checkBookMark();
         }
         private void EmptyNext()
         {
