@@ -87,7 +87,7 @@
             this.textBox1.Location = new System.Drawing.Point(225, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(386, 32);
+            this.textBox1.Size = new System.Drawing.Size(370, 28);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "Search bar";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);

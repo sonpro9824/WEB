@@ -9,9 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace WEB
 {
+    public delegate void TruyenData(string text);
     public partial class Form1 : Form
     {
-        private int n = 1;  
+        private int n = 1;
+        string tabpagename = "";
+ 
+        public void SetNameTabpage(string name)
+        {
+            tabControl1.SelectedTab.Tag = name;
+        }
+       
         public Form1()
         {
             InitializeComponent();
@@ -21,19 +29,23 @@ namespace WEB
         {
 
         }
+        public void TabName(string tabname)
+        {
+            tabControl1.SelectedTab.Text = tabname;
+        }
         private void Addtab()
         {
-            Form2 form2 = new Form2();
+            Form2 form2 = new Form2(TabName);
             form2.Text = form2.Webcom1.Title;
             TabPage tabPage = new TabPage { Text = "Tab" + n.ToString() };
             n++;
             tabPage.BorderStyle = BorderStyle.Fixed3D;
             tabControl1.TabPages.Add(tabPage);
-            //tabControl1.TabPages[0].Text = "Hello world"; 
             form2.TopLevel = false;
-            form2.Parent = tabPage;
+            form2.Parent = tabPage;       
             form2.Show();
             form2.Dock = DockStyle.Fill;
+
         }
         private void iconButton2_Click(object sender, EventArgs e)
         {

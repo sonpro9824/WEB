@@ -17,6 +17,9 @@ namespace WEB
         Stack back = new Stack();
         Stack next = new Stack();
         internal Webcom Webcom1 { get => Webcom; set => Webcom = value; }
+        TruyenData truyenDataform2;
+        
+
         /// <summary>
         /// push title va number
         /// </summary>
@@ -32,18 +35,50 @@ namespace WEB
         {
             label2.Text = webcom.Label_text1;
             label3.Text = webcom.Label_text2;
-            label4.Text = webcom.Label_text3;   
+            label4.Text = webcom.Label_text3;
             label5.Text = webcom.Label_text4;
             label6.Text = webcom.Label_text5;
         }
+        /* private void pushBack()
+         {
+             Webcom webcom = new Webcom();
+             webcom.Count = Convert.ToInt32(label7.Text);
+             webcom.Title = label1.Text;
+             GanLabel(ref webcom);
+             //label7.Text += webcom.Count.ToString();
+             back.Push(webcom);
+
+
+
+             Webcom webcom1 = new Webcom();
+             webcom1.Title = webcom.Title;
+             webcom1.Label_text1 = webcom.Label_text1;
+             webcom1.Label_text2 = webcom.Label_text2;
+             webcom1.Label_text3 = webcom.Label_text3;
+             webcom1.Label_text4 = webcom.Label_text4;
+             webcom1.Label_text5 = webcom.Label_text5;
+             webcom1.Count = webcom.Count;
+             HisoryList.historyControl.AddHistory(webcom1);
+         }*/
         private void pushBack()
         {
             Webcom webcom = new Webcom();
-            webcom.Count = Pagenumber.count;
+            webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;
             GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
             back.Push(webcom);
+            // add lich su
+
+            Webcom webcom1 = new Webcom();
+            webcom1.Title = webcom.Title;
+            webcom1.Label_text1 = webcom.Label_text1;
+            webcom1.Label_text2 = webcom.Label_text2;
+            webcom1.Label_text3 = webcom.Label_text3;
+            webcom1.Label_text4 = webcom.Label_text4;
+            webcom1.Label_text5 = webcom.Label_text5;
+            webcom1.Count = webcom.Count;
+            HisoryList.historyControl.AddHistory(webcom1);
         }
         private void pushNext()
         {
@@ -69,12 +104,14 @@ namespace WEB
             label5.Text = Createrandom();
             label6.Text = Createrandom();
         }
-        public Form2()
+        public Form2(TruyenData truyenData)
         {
             InitializeComponent();
             label1.Text = "Web title: " + Webcom.Title;
             CreaterandomOption();
             label7.Text = Pagenumber.count.ToString();
+            truyenDataform2 = truyenData;
+
         }
         /// <summary>
         /// An di cac option
@@ -98,23 +135,10 @@ namespace WEB
             label5.Visible = true;
             label6.Visible = true;
         }
-        /// <summary>
-        /// An title
-        /// </summary>
-        private void HideTitle()
-        {
-            label1.Visible = false;
-        }
-        /// <summary>
-        /// Hien title
-        /// </summary>
-        private void DisplayTitle()
-        {
-            label1.Visible = true;
-        }
         private void Form2_Load(object sender, EventArgs e)
         {
             button_bookmark.BackColor = Color.White;
+            truyenDataform2(label1.Text);
             Hideoption();
         }
         private void button_bookmark_Click(object sender, EventArgs e)
@@ -128,20 +152,34 @@ namespace WEB
         }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-           
             if (e.KeyCode == Keys.Enter)
             {
+                if (textBox1.Text == "\r\n")
+                {
+                    textBox1.Text = string.Empty;
+                }
+
+
+                if (textBox1.Text == string.Empty)
+                {
+                    //MessageBox.Show("asdsd");
+                    return;
+                }
+                textBox1.Text = textBox1.Text.TrimStart();
                 pushBack();
                 CreaterandomOption();
                 Displayoption();
-                label1.Text = string.Empty; 
+                label1.Text = string.Empty;
                 label1.Text = "Finding resutl for: " + textBox1.Text;
-                textBox1.Clear();
+                //getTitle(label1.Text);
+                truyenDataform2(label1.Text);
+                textBox1.Text = string.Empty;
+                //label1.Text = string.Empty;
                 Pagenumber.count++;
                 Webcom.Count = Pagenumber.count;
-                label7.Text =  Pagenumber.count.ToString();
+                label7.Text = Pagenumber.count.ToString();
                 EmptyNext();
-                
+
             }
         }
 
@@ -156,12 +194,12 @@ namespace WEB
             Pagenumber.count++;
             //textBox1.Text = label2.Text;
             label1.Text = "Title: " + label2.Text;
+            truyenDataform2(label1.Text);
             Webcom.Count = Pagenumber.count;
             CreaterandomOption();
             label7.Text = Pagenumber.count.ToString();
             EmptyNext();
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -172,6 +210,7 @@ namespace WEB
             Pagenumber.count++;
             //textBox1.Text = label6.Text;
             label1.Text = "Title: " + label6.Text;
+            truyenDataform2(label6.Text);
             CreaterandomOption();
             Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
@@ -188,8 +227,9 @@ namespace WEB
             Pagenumber.count++;
             //textBox1.Text = label3.Text;
             label1.Text = "Title: " + label3.Text;
+            truyenDataform2(label1.Text);
             CreaterandomOption();
-            Webcom.Count = Pagenumber.count;                      
+            Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
             EmptyNext();
         }
@@ -199,6 +239,7 @@ namespace WEB
             Pagenumber.count++;
             //textBox1.Text = label4.Text;
             label1.Text = "Title: " + label4.Text;
+            truyenDataform2(label4.Text);
             CreaterandomOption();
             Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
@@ -210,6 +251,7 @@ namespace WEB
             Pagenumber.count++;
             //textBox1.Text = label5.Text;
             label1.Text = "Title: " + label5.Text;
+            truyenDataform2(label1.Text);
             CreaterandomOption();
             Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
@@ -235,7 +277,7 @@ namespace WEB
         {
             if (back.isEmpty())
             {
-                MessageBox.Show("Back is empty","Warning!");
+                MessageBox.Show("Back is empty", "Warning!");
                 return;
             }
             //MessageBox.Show("Tao ne");
@@ -247,7 +289,8 @@ namespace WEB
             next.Push(webcom);
             // day vo next
             Webcom web = back.Pop();
-            label1.Text= web.Title;
+            label1.Text = web.Title;
+            truyenDataform2(label1.Text);
             label7.Text = web.Count.ToString();
             HoantraLabel(web);
             if (label1.Text == "Web title: Welcome home!")
@@ -265,18 +308,19 @@ namespace WEB
         {
             if (next.isEmpty())
             {
-                MessageBox.Show("Next is empty","Warning!");
+                MessageBox.Show("Next is empty", "Warning!");
                 return;
             }
             Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
-            webcom.Title = label1.Text;
+            webcom.Title = label1.Text;  
             GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
             back.Push(webcom);
             Webcom web = next.Pop();
             HoantraLabel(web);
             label1.Text = web.Title;
+            truyenDataform2(label1.Text);
             label7.Text = web.Count.ToString();
             if (label1.Text == "Web title: Welcome home!")
             {
@@ -298,5 +342,8 @@ namespace WEB
         {
 
         }
+       
+
     }
+  
 }

@@ -24,6 +24,7 @@ namespace WEB
             }
             Tail.Next = webcom;
             Tail = webcom;
+            return;
         }
         public void DeleteHistory(Webcom WeBcom)
         {
@@ -45,6 +46,6 @@ namespace WEB
     }
     class HisoryList
     {
-        public static HistoryControl historyControl = null;
+        public static HistoryControl historyControl = new HistoryControl();
     }
 }
