@@ -19,7 +19,6 @@ namespace WEB
         {
             tabControl1.SelectedTab.Tag = name;
         }
-       
         public Form1()
         {
             InitializeComponent();
@@ -80,6 +79,25 @@ namespace WEB
             Form4 form4 = new Form4();
             form4.Text = "Favorite";
             form4.ShowDialog();
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Text != "History")
+                return;
+            Form3 form3 = new Form3();
+            form3.Text = "History";
+            //tabControl1.TabPages.Add(tabPage);
+            //this.tabControl1.SelectedTab = new TabPage();
+            form3.TopLevel = false;
+            form3.Parent = tabControl1.SelectedTab;
+            form3.Show();
+            form3.Dock = DockStyle.Fill;
+        }
+
+        private void iconButton4_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

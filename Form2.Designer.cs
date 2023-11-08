@@ -30,7 +30,6 @@
         {
             this.button_back = new FontAwesome.Sharp.IconButton();
             this.button_next = new FontAwesome.Sharp.IconButton();
-            this.button_reload = new FontAwesome.Sharp.IconButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button_bookmark = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,19 +67,6 @@
             this.button_next.TabIndex = 3;
             this.button_next.UseVisualStyleBackColor = true;
             this.button_next.Click += new System.EventHandler(this.button_next_Click);
-            // 
-            // button_reload
-            // 
-            this.button_reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_reload.IconChar = FontAwesome.Sharp.IconChar.ArrowRightRotate;
-            this.button_reload.IconColor = System.Drawing.Color.Black;
-            this.button_reload.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_reload.Location = new System.Drawing.Point(139, 1);
-            this.button_reload.Name = "button_reload";
-            this.button_reload.Size = new System.Drawing.Size(63, 51);
-            this.button_reload.TabIndex = 4;
-            this.button_reload.UseVisualStyleBackColor = true;
-            this.button_reload.Click += new System.EventHandler(this.button_reload_Click);
             // 
             // textBox1
             // 
@@ -209,7 +195,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_bookmark);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button_reload);
             this.Controls.Add(this.button_next);
             this.Controls.Add(this.button_back);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -225,7 +210,6 @@
 
         private FontAwesome.Sharp.IconButton button_back;
         private FontAwesome.Sharp.IconButton button_next;
-        private FontAwesome.Sharp.IconButton button_reload;
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton button_bookmark;
         private System.Windows.Forms.Label label1;

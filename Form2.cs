@@ -18,28 +18,45 @@ namespace WEB
         Stack next = new Stack();
         internal Webcom Webcom1 { get => Webcom; set => Webcom = value; }
         TruyenData truyenDataform2;
-        
-
         /// <summary>
-        /// push title va number
+        /// Tao doi tuong moi de luu trang web hien tai, Webcom se tro toi doi tuong do 
         /// </summary>
-        private void GanLabel(ref Webcom webcom)
+        private void UpdateData()
         {
+            Webcom webcom = new Webcom();
+            webcom.Title = textBox1.Text;
             webcom.Label_text1 = label2.Text;
             webcom.Label_text2 = label3.Text;
             webcom.Label_text3 = label4.Text;
             webcom.Label_text4 = label5.Text;
             webcom.Label_text5 = label6.Text;
-            webcom.BookMark = Webcom.BookMark;
+            webcom.Count = Convert.ToInt32(label7.Text);
+            Webcom = webcom;
         }
-        private void HoantraLabel(Webcom webcom)
+        /// <summary>
+        /// push title va number
+        /// </summary>
+        private void GanLabel(ref Webcom webcom)
         {
-            label2.Text = webcom.Label_text1;
-            label3.Text = webcom.Label_text2;
-            label4.Text = webcom.Label_text3;
-            label5.Text = webcom.Label_text4;
-            label6.Text = webcom.Label_text5;
-            Webcom.BookMark = webcom.BookMark;
+            Webcom.Label_text1 = label2.Text;
+            Webcom.Label_text2 = label3.Text;
+            Webcom.Label_text3 = label4.Text;
+            Webcom.Label_text4 = label5.Text;
+            Webcom.Label_text5 = label6.Text;
+            Webcom.BookMark = Webcom.BookMark;
+            Webcom.Title = textBox1.Text;
+            Webcom.Count = Convert.ToInt32(label7.Text);
+        }
+        private void HoantraLabel()
+        {
+            label1.Text = Webcom.Title;
+            label2.Text = Webcom.Label_text1;
+            label3.Text = Webcom.Label_text2;
+            label4.Text = Webcom.Label_text3;
+            label5.Text = Webcom.Label_text4;
+            label6.Text = Webcom.Label_text5;
+            Webcom.BookMark = Webcom.BookMark;
+            label7.Text = Webcom.Count.ToString();
         }
         /* private void pushBack()
          {
@@ -75,7 +92,7 @@ namespace WEB
             }
         }
 
-        private void addHis()
+       /* private void addHis()
         {
             // add lich su
             Webcom webcom1 = new Webcom();
@@ -102,18 +119,25 @@ namespace WEB
             webcom1.Label_text5 = label6.Text;
             webcom1.Count = Convert.ToInt32(label7.Text);
             Fav.fav.AddHistory(webcom1);
+        }*/
+        private void addHis()
+        {
+            HisoryList.historyControl.AddHistory(Webcom);
+        }
+        private void addFav()
+        {
+           Fav.fav.AddHistory(Webcom);
         }
         private void pushBack()
         {
-            Webcom webcom = new Webcom();
+            /*Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;
             webcom.BookMark = Webcom.BookMark;
             GanLabel(ref webcom);
-            //label7.Text += webcom.Count.ToString();
-            back.Push(webcom);
-
-            
+            //label7.Text += webcom.Count.ToString();*/
+            UpdateData();
+            back.Push(Webcom);
         }
         private void pushNext()
         {
@@ -175,7 +199,7 @@ namespace WEB
         {
             button_bookmark.BackColor = Color.White;
             truyenDataform2(label1.Text);
-            addHis();
+            //addHis();
             Hideoption();
 
         }
@@ -204,6 +228,7 @@ namespace WEB
                     return;
                 }
                 textBox1.Text = textBox1.Text.TrimStart();
+                //UpdateData();
                 pushBack();
                 CreaterandomOption();
                 Displayoption();
@@ -230,6 +255,7 @@ namespace WEB
         private void label2_Click(object sender, EventArgs e)
         {
             pushBack();
+            //UpdateData();
             Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label2.Text;
@@ -267,6 +293,7 @@ namespace WEB
         private void label3_Click(object sender, EventArgs e)
         {
             pushBack();
+            //UpdateData();
             Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label3.Text;
@@ -281,6 +308,7 @@ namespace WEB
         private void label4_Click(object sender, EventArgs e)
         {
             pushBack();
+            //UpdateData();
             Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label4.Text;
@@ -295,6 +323,7 @@ namespace WEB
         private void label5_Click(object sender, EventArgs e)
         {
             pushBack();
+            //UpdateData();
             Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label5.Text;
@@ -320,21 +349,15 @@ namespace WEB
             {
                 button_bookmark.BackColor = Color.Yellow;
                 Webcom.BookMark = true;
+                addFav();
             }
             else
             {
                 button_bookmark.BackColor = Color.White;
                 Webcom.BookMark = false;
-            }
-            if(Webcom.BookMark==true)
-            {
-
-                addFav();
-            }
-            else
-            {
 
             }
+          
         }
         private void label7_Click_1(object sender, EventArgs e)
         {
@@ -348,18 +371,19 @@ namespace WEB
                 return;
             }
             //MessageBox.Show("Tao ne");
-            Webcom webcom = new Webcom();
+          /*  Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;
             GanLabel(ref webcom);
-            //label7.Text += webcom.Count.ToString();
-            next.Push(webcom);
+            //label7.Text += webcom.Count.ToString();*/
+            UpdateData();
+            next.Push(Webcom);
             // day vo next
-            Webcom web = back.Pop();
-            label1.Text = web.Title;
+            Webcom = back.Pop();
+            label1.Text = Webcom.Title;
             truyenDataform2(label1.Text);
-            label7.Text = web.Count.ToString();
-            HoantraLabel(web);
+            label7.Text = Webcom.Count.ToString();
+            HoantraLabel();
             if (label1.Text == "Web title: Welcome home!")
             {
                 Hideoption();
@@ -379,17 +403,18 @@ namespace WEB
                 MessageBox.Show("Next is empty", "Warning!");
                 return;
             }
-            Webcom webcom = new Webcom();
+            /*Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;  
             GanLabel(ref webcom);
-            //label7.Text += webcom.Count.ToString();
-            back.Push(webcom);
-            Webcom web = next.Pop();
-            HoantraLabel(web);
-            label1.Text = web.Title;
+            //label7.Text += webcom.Count.ToString();*/
+            UpdateData();
+            back.Push(Webcom);
+            Webcom = next.Pop();
+            HoantraLabel();
+            //.Text = web.Title;
             truyenDataform2(label1.Text);
-            label7.Text = web.Count.ToString();
+            //label7.Text = web.Count.ToString();
             if (label1.Text == "Web title: Welcome home!")
             {
                 Hideoption();
@@ -411,8 +436,6 @@ namespace WEB
         {
 
         }
-       
-
     }
   
 }

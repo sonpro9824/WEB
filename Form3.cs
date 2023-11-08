@@ -23,17 +23,19 @@ namespace WEB
             int height = 0;
             for (var i = HisoryList.historyControl.Head; i!=null; i = i.Next)
             {
-               // output += i.Title + "\n";
-               Label label = new Label();
-                //MessageBox.Show(i.Title);
-                label.Text = i.Title + "       Page: " + i.Count.ToString();
+                output += i.Title + "\n";
+              // Label label = new Label();
+                MessageBox.Show(i.Title);
+                /*label.Text = i.Title + "       Page: " + i.Count.ToString();
                 label.Location = new System.Drawing.Point(0, height);
                 label.AutoSize = true;
                 this.Controls.Add(label);   
-                height += 50;
+                height += 50;*/
                 
             }
             //MessageBox.Show(output);
         }
+
+        
     }
 }
