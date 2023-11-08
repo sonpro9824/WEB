@@ -11,10 +11,11 @@ namespace WEB
 {
     public partial class Form1 : Form
     {
-       
+        private int n = 1;  
         public Form1()
         {
             InitializeComponent();
+            Addtab();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -24,10 +25,11 @@ namespace WEB
         {
             Form2 form2 = new Form2();
             form2.Text = form2.Webcom1.Title;
-            TabPage tabPage = new TabPage { Text = form2.Text };
+            TabPage tabPage = new TabPage { Text = "Tab" + n.ToString() };
+            n++;
             tabPage.BorderStyle = BorderStyle.Fixed3D;
             tabControl1.TabPages.Add(tabPage);
-
+            //tabControl1.TabPages[0].Text = "Hello world"; 
             form2.TopLevel = false;
             form2.Parent = tabPage;
             form2.Show();
@@ -39,10 +41,15 @@ namespace WEB
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
-        {   
-           
+        {
+            tabControl1.TabPages.Remove(tabControl1.SelectedTab);
         }
         private void iconButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

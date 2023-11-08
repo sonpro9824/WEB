@@ -132,13 +132,16 @@ namespace WEB
             if (e.KeyCode == Keys.Enter)
             {
                 pushBack();
+                CreaterandomOption();
                 Displayoption();
+                label1.Text = string.Empty; 
                 label1.Text = "Finding resutl for: " + textBox1.Text;
-                //textBox1.Clear();
+                textBox1.Clear();
                 Pagenumber.count++;
                 Webcom.Count = Pagenumber.count;
                 label7.Text =  Pagenumber.count.ToString();
                 EmptyNext();
+                
             }
         }
 

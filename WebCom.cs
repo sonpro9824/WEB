@@ -9,7 +9,6 @@ namespace WEB
     internal class Webcom
     {
         private int count = 0;
-     
         private string title = "Welcome home!";
         private string label_text1 = "Option 1";
         private string label_text2 = "Option 2";
