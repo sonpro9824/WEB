@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Media.TextFormatting;
+using FontStyle = System.Drawing.FontStyle;
 
 namespace WEB
 {
@@ -99,7 +100,7 @@ namespace WEB
                    button1.Height += 5;
                    button.Text = "Acess";
                    button1.Text = "Delete";*/
-                label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.DateTime.ToString();
+                label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.DateTime.ToString() ;
                 //label1.Text = i.Count.ToString();
                 label.AutoSize = true;
                 label.Location = new System.Drawing.Point(0, height);
@@ -110,6 +111,7 @@ namespace WEB
                 button1.Visible = true;*/
                 label.Visible = true;
                 label1.Visible = true;
+                label.Font = new Font("Calibri", 12, FontStyle.Regular);
                 this.Controls.Add(label);
               /*  this.Controls.Add(button);
                 this.Controls.Add(button1);*/

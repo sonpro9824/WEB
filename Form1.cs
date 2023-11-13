@@ -15,7 +15,7 @@ namespace WEB
     public partial class Form1 : Form
     {
         //private int n = 1;
-        string tabpagename = "";
+        //string tabpagename = "";
  
         public void SetNameTabpage(string name)
         {
@@ -106,6 +106,11 @@ namespace WEB
             form5.Parent = tabPage;
             form5.Show();
             form5.Dock = DockStyle.Fill;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+     
         }
     }
 }
