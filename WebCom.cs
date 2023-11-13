@@ -17,6 +17,7 @@ namespace WEB
         private string label_text5 = "Option 5";
         private Webcom NextforHistory = null;
         private Webcom NextforStack = null;
+        private Webcom NextforFav = null;
         private bool bookMark = false;
         private DateTime dateTime = DateTime.Now;
         public Webcom()
@@ -24,7 +25,7 @@ namespace WEB
 
         }
 
-        public Webcom(int count, string title, string label_text1, string label_text2, string label_text3, string label_text4, string label_text5, Webcom nextforHistory, Webcom nextforStack, bool bookMark, DateTime dateTime)
+        public Webcom(int count, string title, string label_text1, string label_text2, string label_text3, string label_text4, string label_text5, Webcom nextforHistory, Webcom nextforStack, Webcom nextforFav, bool bookMark, DateTime dateTime)
         {
             this.count = count;
             this.title = title;
@@ -35,6 +36,7 @@ namespace WEB
             this.label_text5 = label_text5;
             NextforHistory = nextforHistory;
             NextforStack = nextforStack;
+            NextforFav = nextforFav;
             this.bookMark = bookMark;
             this.dateTime = dateTime;
         }
@@ -52,6 +54,7 @@ namespace WEB
         public Webcom NextforStack1 { get => NextforStack; set => NextforStack = value; }
         public Webcom NextforHistory1 { get => NextforHistory; set => NextforHistory = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
+        public Webcom NextforFav1 { get => NextforFav; set => NextforFav = value; }
     }
     class Stack
     {

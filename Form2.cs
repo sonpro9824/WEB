@@ -468,12 +468,14 @@ namespace WEB
             {
                 //button_bookmark.BackColor = Color.Yellow;
                 Webcom.BookMark = true;
+                FavControl.FavList.AddFav(ref Webcom);
                 CheckBookmark();
             }
             else
             {
                 //button_bookmark.BackColor=Color.White;
                 Webcom.BookMark = false;
+                FavControl.FavList.RemoveFav(ref Webcom);
                 CheckBookmark();
             }
             MessageBox.Show(Webcom.BookMark.ToString());
