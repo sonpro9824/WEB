@@ -45,7 +45,7 @@ namespace WEB
             {
                 int labelindex = (int)Clicked_Label.Tag;
                 string labelname = Clicked_Label.Text;
-                System.Windows.MessageBox.Show(((Webcom)Weblist[labelindex]).BookMark.ToString());
+                //System.Windows.MessageBox.Show(((Webcom)Weblist[labelindex]).BookMark.ToString());
 
 
                 /* Webcom temp = ((Webcom)Weblist[labelindex]).Next;

@@ -45,7 +45,7 @@ namespace WEB
             if (WeBcom == head)
             {
                 head = head.NextforHistory1;
-                WeBcom = null;
+                WeBcom.NextforHistory1 = null;
             }
            for (var i = head; i!=null; i=i.NextforHistory1)
            {

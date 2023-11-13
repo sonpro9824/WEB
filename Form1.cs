@@ -98,7 +98,14 @@ namespace WEB
 
         private void iconButton4_Click(object sender, EventArgs e)
         {
-
+            TabPage tabPage = new TabPage { Text = "Favorite list" };
+            Form5 form5 = new Form5(Addtab, tabPage, Chuyentab);
+            tabPage.BorderStyle = BorderStyle.Fixed3D;
+            tabControl1.TabPages.Add(tabPage);
+            form5.TopLevel = false;
+            form5.Parent = tabPage;
+            form5.Show();
+            form5.Dock = DockStyle.Fill;
         }
     }
 }
