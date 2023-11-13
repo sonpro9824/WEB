@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using System.Windows.Media.TextFormatting;
 
 namespace WEB
 {
@@ -57,6 +58,7 @@ namespace WEB
                 Webcom temp = ((Webcom)Weblist[labelindex]);
                 //HisoryList.historyControl.Noibot(ref temp);
                 HisoryList.historyControl.TachHistory(ref temp);
+                temp.DateTime = DateTime.Now;
                 Sender(ref temp);
                
                // Pagenumber.count--;
@@ -93,11 +95,11 @@ namespace WEB
               /*  buttons.Add(button);
                 buttons1.Add(button1);*/
                 Weblist.Add(i);
-             /*   button.Height += 5;
-                button1.Height += 5;
-                button.Text = "Acess";
-                button1.Text = "Delete";*/
-                label.Text = i.Title + " ---- Page: " + i.Count.ToString();
+                /*   button.Height += 5;
+                   button1.Height += 5;
+                   button.Text = "Acess";
+                   button1.Text = "Delete";*/
+                label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.DateTime.ToString();
                 //label1.Text = i.Count.ToString();
                 label.AutoSize = true;
                 label.Location = new System.Drawing.Point(0, height);

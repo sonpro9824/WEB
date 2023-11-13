@@ -394,7 +394,10 @@ namespace WEB
             label7.Text = web.Count.ToString();
             HoantraLabel(ref web);
             Webcom = web;
+            Webcom.DateTime = DateTime.Now;
             CheckBookmark();
+            HisoryList.historyControl.TachHistory(ref Webcom);
+            AddHistory();
             if (label1.Text == "Title: Welcome home!")
             {
                 Hideoption();
@@ -428,7 +431,10 @@ namespace WEB
             truyenDataform2(label1.Text);
             label7.Text = web.Count.ToString();
             Webcom = web;
+            Webcom.DateTime = DateTime.Now;
             CheckBookmark();
+            HisoryList.historyControl.TachHistory(ref Webcom);
+            AddHistory();
             //MessageBox.Show(label1.Text);
             if (label1.Text == "Title: Welcome home!")
             {

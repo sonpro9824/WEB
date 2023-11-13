@@ -18,12 +18,13 @@ namespace WEB
         private Webcom NextforHistory = null;
         private Webcom NextforStack = null;
         private bool bookMark = false;
+        private DateTime dateTime = DateTime.Now;
         public Webcom()
         {
 
         }
 
-        public Webcom(int count, string title, string label_text1, string label_text2, string label_text3, string label_text4, string label_text5, Webcom nextforHistory, Webcom nextforStack, bool bookMark)
+        public Webcom(int count, string title, string label_text1, string label_text2, string label_text3, string label_text4, string label_text5, Webcom nextforHistory, Webcom nextforStack, bool bookMark, DateTime dateTime)
         {
             this.count = count;
             this.title = title;
@@ -35,6 +36,7 @@ namespace WEB
             NextforHistory = nextforHistory;
             NextforStack = nextforStack;
             this.bookMark = bookMark;
+            this.dateTime = dateTime;
         }
 
         public string Label_text1 { get => label_text1; set => label_text1 = value; }
@@ -49,6 +51,7 @@ namespace WEB
        
         public Webcom NextforStack1 { get => NextforStack; set => NextforStack = value; }
         public Webcom NextforHistory1 { get => NextforHistory; set => NextforHistory = value; }
+        public DateTime DateTime { get => dateTime; set => dateTime = value; }
     }
     class Stack
     {
