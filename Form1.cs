@@ -40,7 +40,7 @@ namespace WEB
         private void Addtab(ref Webcom webcom)
         {
            
-            Form2 form2 = new Form2(TabName,webcom);
+            Form2 form2 = new Form2(TabName,ref webcom);
             form2.Text = form2.Webcom1.Title;
             TabPage tabPage = new TabPage { Text = webcom.Title};
             tabControl1.TabPages.Add(tabPage);

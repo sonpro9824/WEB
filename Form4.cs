@@ -56,9 +56,9 @@ namespace WEB
                 int index = ((Webcom)Weblist[labelindex]).Count;
                 Webcom temp = ((Webcom)Weblist[labelindex]);
                 //HisoryList.historyControl.Noibot(ref temp);
-
+                HisoryList.historyControl.TachHistory(ref temp);
                 Sender(ref temp);
-                HisoryList.historyControl.DeleteHistory(ref temp);
+               
                // Pagenumber.count--;
                 chuyen(tabPage1);
                 //System.Windows.Forms.MessageBox.Show("Label name:  "+ labelname + " clicked");

@@ -34,7 +34,11 @@ namespace WEB
             }
             return;*/
         }
-        public void DeleteHistory(ref Webcom WeBcom)
+        /// <summary>
+        /// Nhan vao t tham so ref, tach tham so nay ra khoi list hisory
+        /// </summary>
+        /// <param name="WeBcom"></param>
+        public void TachHistory(ref Webcom WeBcom)
         {
             if (Head == null)
                 return;
@@ -49,6 +53,7 @@ namespace WEB
                 {
                     i.NextforHistory1 = WeBcom.NextforHistory1;
                     WeBcom.NextforHistory1 = null;
+                    //WeBcom.NextforHistory1 = null;
                    /* tail.Next = WeBcom;
                     tail = WeBcom;
                     tail.Next = null;*/

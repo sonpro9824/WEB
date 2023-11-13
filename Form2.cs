@@ -134,7 +134,7 @@ namespace WEB
             label5.Text = Createrandom();
             label6.Text = Createrandom();
         }
-        public Form2(TruyenData truyenData, Webcom webcom)
+        public Form2(TruyenData truyenData, ref Webcom webcom)
         {
             
             InitializeComponent();
