@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace WEB
 {
-    internal class Webcom
+    public class Webcom
     {
         private int count = 0;
-        private string title = "Welcome home!";
+        private string title = "Title: Welcome home!";
         private string label_text1 = "Option 1";
         private string label_text2 = "Option 2";
         private string label_text3 = "Option 3";
         private string label_text4 = "Option 4";
         private string label_text5 = "Option 5";
-        private Webcom next = null;
+        private Webcom NextforHistory = null;
+        private Webcom NextforStack = null;
         private bool bookMark = false;
         public Webcom()
         {
 
         }
-        public Webcom(int count, string title, string label_text1, string label_text2, string label_text3, string label_text4, string label_text5, Webcom next)
+
+        public Webcom(int count, string title, string label_text1, string label_text2, string label_text3, string label_text4, string label_text5, Webcom nextforHistory, Webcom nextforStack, bool bookMark)
         {
             this.count = count;
             this.title = title;
@@ -30,8 +32,11 @@ namespace WEB
             this.label_text3 = label_text3;
             this.label_text4 = label_text4;
             this.label_text5 = label_text5;
-            this.next = next;
+            NextforHistory = nextforHistory;
+            NextforStack = nextforStack;
+            this.bookMark = bookMark;
         }
+
         public string Label_text1 { get => label_text1; set => label_text1 = value; }
         public string Label_text2 { get => label_text2; set => label_text2 = value; }
         public string Label_text3 { get => label_text3; set => label_text3 = value; }
@@ -39,8 +44,11 @@ namespace WEB
         public string Label_text5 { get => label_text5; set => label_text5 = value; }
         public int Count { get => count; set => count = value; }
         public string Title { get => title; set => title = value; }
-        public Webcom Next { get => next; set => next = value; }
+      
         public bool BookMark { get => bookMark; set => bookMark = value; }
+       
+        public Webcom NextforStack1 { get => NextforStack; set => NextforStack = value; }
+        public Webcom NextforHistory1 { get => NextforHistory; set => NextforHistory = value; }
     }
     class Stack
     {
@@ -51,14 +59,14 @@ namespace WEB
         /// Day vao 1 phan tu
         /// </summary>
         /// <param name="webcomponent"></param>
-        public void Push(Webcom webcomponent)
+        public void Push(ref Webcom webcomponent)
         {
             if (Head == null)
             {
                 Head = webcomponent;
                 return;
             }
-            webcomponent.Next = Head;
+            webcomponent.NextforStack1 = Head;
             Head = webcomponent;
             return;
         }
@@ -66,15 +74,15 @@ namespace WEB
         /// Tra ve phan tu top
         /// </summary>
         /// <returns></returns>
-        public Webcom Pop()
+        public void Pop(ref Webcom webcom)
         {
             if (Head == null)
             {
-                return null;
+                return;
             }
-            Webcom webcomponent = Head;
-            Head = Head.Next;
-            return webcomponent;
+            webcom = Head;
+            Head = Head.NextforStack1;
+            //return webcomponent;
         }
         /// <summary>
         /// Stack co rong khong?

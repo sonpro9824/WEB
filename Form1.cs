@@ -10,20 +10,25 @@ using System.Windows.Forms;
 namespace WEB
 {
     public delegate void TruyenData(string text);
+    public delegate void Taotab(ref Webcom webcom);
+    public delegate void ChuyenTab(TabPage tabPage);
     public partial class Form1 : Form
     {
-        private int n = 1;
+        //private int n = 1;
         string tabpagename = "";
  
         public void SetNameTabpage(string name)
         {
             tabControl1.SelectedTab.Tag = name;
         }
+       
         public Form1()
         {
             InitializeComponent();
-            Addtab();
+            Webcom webcom = new Webcom();
+            Addtab(ref webcom);
         }
+  
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -32,41 +37,58 @@ namespace WEB
         {
             tabControl1.SelectedTab.Text = tabname;
         }
-        private void Addtab()
+        private void Addtab(ref Webcom webcom)
         {
-            Form2 form2 = new Form2(TabName);
+           
+            Form2 form2 = new Form2(TabName,webcom);
             form2.Text = form2.Webcom1.Title;
-            TabPage tabPage = new TabPage { Text = "Tab" + n.ToString() };
-            n++;
-            tabPage.BorderStyle = BorderStyle.Fixed3D;
+            TabPage tabPage = new TabPage { Text = webcom.Title};
             tabControl1.TabPages.Add(tabPage);
+            //MessageBox.Show(webcom.Label_text1);
+            //n++;
+            tabPage.BorderStyle = BorderStyle.Fixed3D;
             form2.TopLevel = false;
-            form2.Parent = tabPage;       
+            form2.Parent = tabPage;
+            if (webcom.Title != "Title: Welcome home!")
+                form2.Displayoption();
+            else form2.Hideoption();
+            form2.HoantraLabel(ref webcom);
             form2.Show();
             form2.Dock = DockStyle.Fill;
-
         }
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            Addtab();
+            Pagenumber.count++;
+            Webcom webcom = new Webcom();
+            webcom.Count = Pagenumber.count;
+            Addtab(ref webcom);
+        }
+        public void Chuyentab(TabPage tab)
+        {
+            tabControl1.SelectedTab = tab;
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+            if (tabControl1.TabPages.Count!=0)
+                tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+            else
+            {
+                return;
+            }
         }
         private void iconButton3_Click(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3();
-            form3.Text = "History";
+            
             TabPage tabPage = new TabPage { Text = "History" };
+            Form4 form4 = new Form4(Addtab, tabPage, Chuyentab);
             tabPage.BorderStyle = BorderStyle.Fixed3D;
             tabControl1.TabPages.Add(tabPage);
-            form3.TopLevel = false;
-            form3.Parent = tabPage;
-            form3.Show();
-            form3.Dock = DockStyle.Fill;
-            
+            form4.TopLevel = false;
+            form4.Parent = tabPage;
+            form4.Show();
+            form4.Dock = DockStyle.Fill;
+            //form4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,27 +97,6 @@ namespace WEB
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
-        {
-            Form4 form4 = new Form4();
-            form4.Text = "Favorite";
-            form4.ShowDialog();
-        }
-
-        private void iconButton5_Click(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedTab.Text != "History")
-                return;
-            Form3 form3 = new Form3();
-            form3.Text = "History";
-            //tabControl1.TabPages.Add(tabPage);
-            //this.tabControl1.SelectedTab = new TabPage();
-            form3.TopLevel = false;
-            form3.Parent = tabControl1.SelectedTab;
-            form3.Show();
-            form3.Dock = DockStyle.Fill;
-        }
-
-        private void iconButton4_Click_1(object sender, EventArgs e)
         {
 
         }

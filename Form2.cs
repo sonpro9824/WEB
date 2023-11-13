@@ -19,44 +19,35 @@ namespace WEB
         internal Webcom Webcom1 { get => Webcom; set => Webcom = value; }
         TruyenData truyenDataform2;
         /// <summary>
-        /// Tao doi tuong moi de luu trang web hien tai, Webcom se tro toi doi tuong do 
+        /// push title va number
         /// </summary>
-        private void UpdateData()
+        private void GanLabel(ref Webcom webcom)
         {
-            Webcom webcom = new Webcom();
-            webcom.Title = textBox1.Text;
             webcom.Label_text1 = label2.Text;
             webcom.Label_text2 = label3.Text;
             webcom.Label_text3 = label4.Text;
             webcom.Label_text4 = label5.Text;
             webcom.Label_text5 = label6.Text;
-            webcom.Count = Convert.ToInt32(label7.Text);
-            Webcom = webcom;
+            
         }
         /// <summary>
-        /// push title va number
+        /// Them 1 vung nho duoc Webcom tro toi vao list lich su duyet web
         /// </summary>
-        private void GanLabel(ref Webcom webcom)
+        public void AddHistory()
         {
-            Webcom.Label_text1 = label2.Text;
-            Webcom.Label_text2 = label3.Text;
-            Webcom.Label_text3 = label4.Text;
-            Webcom.Label_text4 = label5.Text;
-            Webcom.Label_text5 = label6.Text;
-            Webcom.BookMark = Webcom.BookMark;
-            Webcom.Title = textBox1.Text;
-            Webcom.Count = Convert.ToInt32(label7.Text);
+            HisoryList.historyControl.AddHistory(ref Webcom);
         }
-        private void HoantraLabel()
+        /// <summary>
+        /// Gan cac label hien tai tren form 2 vao phan tu web
+        /// </summary>
+        /// <param name="webcom"></param>
+        public void HoantraLabel(ref Webcom webcom)
         {
-            label1.Text = Webcom.Title;
-            label2.Text = Webcom.Label_text1;
-            label3.Text = Webcom.Label_text2;
-            label4.Text = Webcom.Label_text3;
-            label5.Text = Webcom.Label_text4;
-            label6.Text = Webcom.Label_text5;
-            Webcom.BookMark = Webcom.BookMark;
-            label7.Text = Webcom.Count.ToString();
+            label2.Text = webcom.Label_text1;
+            label3.Text = webcom.Label_text2;
+            label4.Text = webcom.Label_text3;
+            label5.Text = webcom.Label_text4;
+            label6.Text = webcom.Label_text5;
         }
         /* private void pushBack()
          {
@@ -79,74 +70,51 @@ namespace WEB
              webcom1.Count = webcom.Count;
              HisoryList.historyControl.AddHistory(webcom1);
          }*/
-
-        private void checkBookMark()
-        {
-            if(Webcom.BookMark==true)
-            {
-                button_bookmark.BackColor = Color.Yellow;
-            }
-            else
-            {
-                button_bookmark.BackColor = Color.White;
-            }
-        }
-
-       /* private void addHis()
-        {
-            // add lich su
-            Webcom webcom1 = new Webcom();
-            webcom1.Title = label1.Text;
-            webcom1.Label_text1 = label2.Text;
-            //MessageBox.Show(webcom1.Title);
-            webcom1.Label_text2 = label3.Text;
-            webcom1.Label_text3 = label4.Text   ;
-            webcom1.Label_text4 = label5.Text;
-            webcom1.Label_text5 = label6.Text;
-            webcom1.Count = Convert.ToInt32(label7.Text);
-            HisoryList.historyControl.AddHistory(webcom1);
-        }
-        private void addFav()
-        {
-            // add lich su
-            Webcom webcom1 = new Webcom();
-            webcom1.Title = label1.Text;
-            webcom1.Label_text1 = label2.Text;
-            //MessageBox.Show(webcom1.Title);
-            webcom1.Label_text2 = label3.Text;
-            webcom1.Label_text3 = label4.Text;
-            webcom1.Label_text4 = label5.Text;
-            webcom1.Label_text5 = label6.Text;
-            webcom1.Count = Convert.ToInt32(label7.Text);
-            Fav.fav.AddHistory(webcom1);
-        }*/
-        private void addHis()
-        {
-            HisoryList.historyControl.AddHistory(Webcom);
-        }
-        private void addFav()
-        {
-           Fav.fav.AddHistory(Webcom);
-        }
+        /// <summary>
+        /// Push trang hien tai dang duoc quan ly boi Webcom vao revious
+        /// </summary>
         private void pushBack()
         {
-            /*Webcom webcom = new Webcom();
+           /* Webcom webcom = new Webcom();
             webcom.Count = Convert.ToInt32(label7.Text);
             webcom.Title = label1.Text;
-            webcom.BookMark = Webcom.BookMark;
             GanLabel(ref webcom);
-            //label7.Text += webcom.Count.ToString();*/
-            UpdateData();
-            back.Push(Webcom);
+            webcom.BookMark = Webcom.BookMark;*/
+            //label7.Text += webcom.Count.ToString();
+            back.Push(ref Webcom);
+            // add lich su
+          /*  Webcom webcom1 = new Webcom();
+            webcom1.Title = webcom.Title;
+            webcom1.Label_text1 = webcom.Label_text1;
+            webcom1.Label_text2 = webcom.Label_text2;
+            webcom1.Label_text3 = webcom.Label_text3;
+            webcom1.Label_text4 = webcom.Label_text4;
+            webcom1.Label_text5 = webcom.Label_text5;
+            webcom1.BookMark = Webcom.BookMark;
+            webcom1.Count = webcom.Count;*/
+            //HisoryList.historyControl.AddHistory(webcom1);
+        }
+        /// <summary>
+        /// Tao doi tuong moi, cho Webcom tro toi, mac dinh bookmark se luon la false
+        /// </summary>
+        public void Sangtrang()
+        {
+            Webcom webcon = new Webcom();
+            GanLabel(ref webcon);
+            webcon.Title = label1.Text;
+            webcon.BookMark = false;
+            webcon.Count = Convert.ToInt32(label7.Text);
+            Webcom = webcon;
         }
         private void pushNext()
         {
             Webcom webcom = new Webcom();
             webcom.Count = Pagenumber.count;
             webcom.Title = label1.Text;
+            webcom.BookMark = Webcom.BookMark;
             GanLabel(ref webcom);
             //label7.Text += webcom.Count.ToString();
-            next.Push(webcom);
+            next.Push(ref webcom);
         }
         private string Createrandom()
         {
@@ -155,6 +123,9 @@ namespace WEB
             Randomstring result = new Randomstring();
             return result.GenerateRandomString(n);
         }
+        /// <summary>
+        /// Thay doi cac option, khong anh huong den Webcom
+        /// </summary>
         private void CreaterandomOption()
         {
             label2.Text = Createrandom();
@@ -163,20 +134,26 @@ namespace WEB
             label5.Text = Createrandom();
             label6.Text = Createrandom();
         }
-        public Form2(TruyenData truyenData)
+        public Form2(TruyenData truyenData, Webcom webcom)
         {
             
             InitializeComponent();
-            label1.Text = "Web title: " + Webcom.Title;
-            CreaterandomOption();
-            label7.Text = Pagenumber.count.ToString();
-            truyenDataform2 = truyenData;
+            button_bookmark.BackColor = Color.White;
 
+            Webcom = webcom;
+          
+            label1.Text = Webcom.Title;
+            CreaterandomOption();
+            label7.Text = Webcom.Count.ToString();
+            HoantraLabel(ref webcom);
+            CheckBookmark();
+            truyenDataform2 = truyenData;
+            AddHistory();
         }
         /// <summary>
         /// An di cac option
         /// </summary>
-        private void Hideoption()
+        public void Hideoption()
         {
             label2.Visible = false;
             label3.Visible = false;
@@ -187,7 +164,7 @@ namespace WEB
         /// <summary>
         /// Hien ra cac option
         /// </summary>
-        private void Displayoption()
+        public void Displayoption()
         {
             label2.Visible = true;
             label3.Visible = true;
@@ -197,11 +174,15 @@ namespace WEB
         }
         private void Form2_Load(object sender, EventArgs e)
         {
-            button_bookmark.BackColor = Color.White;
+            //button_bookmark.BackColor = Color.White;
             truyenDataform2(label1.Text);
-            //addHis();
-            Hideoption();
-
+            //Webcom webcom = Webcom;
+            //HoantraLabel(ref Webcom);
+            if (Webcom.Title != "Title: Welcome home!")
+                Displayoption();
+            else Hideoption();
+            //MessageBox.Show("Tao ne");
+            //AddHistory();
         }
         private void button_bookmark_Click(object sender, EventArgs e)
         {
@@ -220,19 +201,15 @@ namespace WEB
                 {
                     textBox1.Text = string.Empty;
                 }
-
-
                 if (textBox1.Text == string.Empty)
                 {
                     //MessageBox.Show("asdsd");
                     return;
                 }
                 textBox1.Text = textBox1.Text.TrimStart();
-                //UpdateData();
                 pushBack();
                 CreaterandomOption();
                 Displayoption();
-                Webcom.BookMark = false;
                 label1.Text = string.Empty;
                 label1.Text = "Finding resutl for: " + textBox1.Text;
                 //getTitle(label1.Text);
@@ -240,32 +217,43 @@ namespace WEB
                 textBox1.Text = string.Empty;
                 //label1.Text = string.Empty;
                 Pagenumber.count++;
-                Webcom.Count = Pagenumber.count;
+                //Webcom.Count = Pagenumber.count;
                 label7.Text = Pagenumber.count.ToString();
+                Sangtrang();
+                AddHistory();
+                CheckBookmark();
                 EmptyNext();
-                addHis();
+
             }
         }
-
         private void textBox1_DoubleClick(object sender, EventArgs e)
         {
             textBox1.Clear();
         }
-
         private void label2_Click(object sender, EventArgs e)
         {
             pushBack();
-            //UpdateData();
-            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label2.Text;
             label1.Text = "Title: " + label2.Text;
             truyenDataform2(label1.Text);
-            Webcom.Count = Pagenumber.count;
+            //Webcom.Count = Pagenumber.count;
             CreaterandomOption();
             label7.Text = Pagenumber.count.ToString();
+            Sangtrang();
+            AddHistory();
+            CheckBookmark();
             EmptyNext();
-            addHis() ;
+            //addFav();
+        }
+        private void checkBookMark(Webcom Webcom)
+        {
+            if (Webcom.BookMark == true)
+                button_bookmark.BackColor = Color.Yellow;
+            else
+            {
+                button_bookmark.BackColor = Color.White;
+            }
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -274,18 +262,19 @@ namespace WEB
         private void label6_Click(object sender, EventArgs e)
         {
             pushBack();
-            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label6.Text;
             label1.Text = "Title: " + label6.Text;
-            truyenDataform2(label6.Text);
+            truyenDataform2(label1.Text);
             CreaterandomOption();
-            Webcom.Count = Pagenumber.count;
+            //Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
+            Sangtrang();
+            AddHistory();
+            CheckBookmark();
             EmptyNext();
-            addHis() ;
+            //addFav();
         }
-
         private void label7_Click(object sender, EventArgs e)
         {
 
@@ -293,47 +282,50 @@ namespace WEB
         private void label3_Click(object sender, EventArgs e)
         {
             pushBack();
-            //UpdateData();
-            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label3.Text;
             label1.Text = "Title: " + label3.Text;
             truyenDataform2(label1.Text);
             CreaterandomOption();
-            Webcom.Count = Pagenumber.count;
+            //Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
+            Sangtrang();
+            AddHistory();
+            CheckBookmark();
             EmptyNext();
-            addHis() ;
+            //addFav();
         }
         private void label4_Click(object sender, EventArgs e)
         {
             pushBack();
-            //UpdateData();
-            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label4.Text;
             label1.Text = "Title: " + label4.Text;
-            truyenDataform2(label4.Text);
+            truyenDataform2(label1.Text);
             CreaterandomOption();
-            Webcom.Count = Pagenumber.count;
+            //Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
+            Sangtrang();
+            AddHistory();
+            CheckBookmark();
             EmptyNext();
-            addHis() ;
+            //addFav();
         }
         private void label5_Click(object sender, EventArgs e)
         {
             pushBack();
-            //UpdateData();
-            Webcom.BookMark = false;
             Pagenumber.count++;
             //textBox1.Text = label5.Text;
             label1.Text = "Title: " + label5.Text;
             truyenDataform2(label1.Text);
             CreaterandomOption();
-            Webcom.Count = Pagenumber.count;
+            //Webcom.Count = Pagenumber.count;
             label7.Text = Pagenumber.count.ToString();
+            Sangtrang();
+            AddHistory();
+            CheckBookmark();
             EmptyNext();
-            addHis() ;
+            //addFav();
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -343,7 +335,7 @@ namespace WEB
         {
 
         }
-        private void button_bookmark_Click_1(object sender, EventArgs e)
+        /*private void button_bookmark_Click_1(object sender, EventArgs e)
         {
             if(button_bookmark.BackColor == Color.White)
             {
@@ -353,12 +345,26 @@ namespace WEB
             }
             else
             {
-                button_bookmark.BackColor = Color.White;
+                button_bookmark.BackColor= Color.White;
                 Webcom.BookMark = false;
-
             }
-          
-        }
+        }*/
+       /* private void addFav()
+        {
+
+            Webcom webcom1 = new Webcom();
+            webcom1.Title = label1.Text;
+            webcom1.Label_text1 = label2.Text;
+            //MessageBox.Show(webcom1.Title);
+            webcom1.Label_text2 = label3.Text;
+            webcom1.Label_text3 = label4.Text;
+            webcom1.Label_text4 = label5.Text;
+            webcom1.Label_text5 = label6.Text;
+            webcom1.Count = Convert.ToInt32(label7.Text);
+            webcom1.BookMark = Webcom.BookMark;
+            checkBookMark(webcom1);
+            Fav.fav.AddHistory(webcom1);
+        }*/
         private void label7_Click_1(object sender, EventArgs e)
         {
 
@@ -371,20 +377,25 @@ namespace WEB
                 return;
             }
             //MessageBox.Show("Tao ne");
-          /*  Webcom webcom = new Webcom();
-            webcom.Count = Convert.ToInt32(label7.Text);
-            webcom.Title = label1.Text;
-            GanLabel(ref webcom);
-            //label7.Text += webcom.Count.ToString();*/
-            UpdateData();
-            next.Push(Webcom);
+            /*   Webcom webcom = new Webcom();
+               webcom.Count = Convert.ToInt32(label7.Text);
+               webcom.Title = label1.Text;
+               webcom.BookMark = Webcom.BookMark;
+               GanLabel(ref webcom);
+               //checkBookMark(webcom);
+               //label7.Text += webcom.Count.ToString();*/
+            next.Push(ref Webcom);
             // day vo next
-            Webcom = back.Pop();
-            label1.Text = Webcom.Title;
+
+            Webcom web = null;
+            back.Pop(ref web);
+            label1.Text = web.Title;
             truyenDataform2(label1.Text);
-            label7.Text = Webcom.Count.ToString();
-            HoantraLabel();
-            if (label1.Text == "Web title: Welcome home!")
+            label7.Text = web.Count.ToString();
+            HoantraLabel(ref web);
+            Webcom = web;
+            CheckBookmark();
+            if (label1.Text == "Title: Welcome home!")
             {
                 Hideoption();
             }
@@ -392,10 +403,8 @@ namespace WEB
             {
                 Displayoption();
             }
-            checkBookMark();
             // lui ve
         }
-
         private void button_next_Click(object sender, EventArgs e)
         {
             if (next.isEmpty())
@@ -403,38 +412,79 @@ namespace WEB
                 MessageBox.Show("Next is empty", "Warning!");
                 return;
             }
-            /*Webcom webcom = new Webcom();
-            webcom.Count = Convert.ToInt32(label7.Text);
-            webcom.Title = label1.Text;  
-            GanLabel(ref webcom);
-            //label7.Text += webcom.Count.ToString();*/
-            UpdateData();
-            back.Push(Webcom);
-            Webcom = next.Pop();
-            HoantraLabel();
-            //.Text = web.Title;
+            /*  Webcom webcom = new Webcom();
+              webcom.Count = Convert.ToInt32(label7.Text);
+              webcom.Title = label1.Text;
+              webcom.BookMark = Webcom.BookMark;
+              GanLabel(ref webcom);
+              checkBookMark(webcom);
+              //label7.Text += webcom.Count.ToString();*/
+            //back.Push(Webcom);
+            pushBack();
+            Webcom web = null;
+            next.Pop(ref web);
+            HoantraLabel(ref web);
+            label1.Text = web.Title;
             truyenDataform2(label1.Text);
-            //label7.Text = web.Count.ToString();
-            if (label1.Text == "Web title: Welcome home!")
+            label7.Text = web.Count.ToString();
+            Webcom = web;
+            CheckBookmark();
+            //MessageBox.Show(label1.Text);
+            if (label1.Text == "Title: Welcome home!")
             {
+                MessageBox.Show(label1.Text);
                 Hideoption();
             }
             else
             {
                 Displayoption();
             }
-            checkBookMark();
         }
         private void EmptyNext()
         {
             while (!next.isEmpty())
             {
-                next.Pop();
+                next.Head = next.Head.NextforStack1;
             }
         }
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// Gan true / false va tac dong toi lich su cung nhu favorite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_bookmark_Click_1(object sender, EventArgs e)
+        {
+            if (button_bookmark.BackColor==Color.White)
+            {
+                //button_bookmark.BackColor = Color.Yellow;
+                Webcom.BookMark = true;
+                CheckBookmark();
+            }
+            else
+            {
+                //button_bookmark.BackColor=Color.White;
+                Webcom.BookMark = false;
+                CheckBookmark();
+            }
+            MessageBox.Show(Webcom.BookMark.ToString());
+        }
+        /// <summary>
+        /// Dung de doi mau bookmark 
+        /// </summary>
+        private void CheckBookmark()
+        {
+            if (Webcom.BookMark == true)
+            {
+                button_bookmark.BackColor = Color.Yellow;
+            }
+            else 
+            { 
+                button_bookmark.BackColor = Color.White;
+            }
         }
     }
   

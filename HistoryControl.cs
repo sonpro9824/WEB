@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Windows;
 
 namespace WEB
 {
@@ -10,11 +13,11 @@ namespace WEB
     {
         private Webcom head = null;
         private Webcom tail = null;
-
+        
         internal Webcom Head { get => head; set => head = value; }
         internal Webcom Tail { get => tail; set => tail = value; }
 
-        public void AddHistory(Webcom webcom)
+        public void AddHistory(ref Webcom webcom)
         {
             if (Head == null)
             {
@@ -22,30 +25,84 @@ namespace WEB
                 Tail = webcom;
                 return;
             }
-            Tail.Next = webcom;
+            Tail.NextforHistory1 = webcom;
             Tail = webcom;
-            return;
+            tail.NextforHistory1 = null;
+         /*   if (!HasHistory.hashHistory.ContainsKey(webcom.Count))
+            {
+                HasHistory.hashHistory.Add(webcom.Count, webcom);
+            }
+            return;*/
         }
-        public void DeleteHistory(Webcom WeBcom)
+        public void DeleteHistory(ref Webcom WeBcom)
         {
             if (Head == null)
                 return;
             if (WeBcom == head)
             {
-                head = head.Next;
+                head = head.NextforHistory1;
                 WeBcom = null;
             }
-           Webcom i = Head;
-           for (i = head; i.Next!=WeBcom; i=i.Next)
+           for (var i = head; i!=null; i=i.NextforHistory1)
            {
-                
+                if (i.NextforHistory1 == WeBcom)
+                {
+                    i.NextforHistory1 = WeBcom.NextforHistory1;
+                    WeBcom.NextforHistory1 = null;
+                   /* tail.Next = WeBcom;
+                    tail = WeBcom;
+                    tail.Next = null;*/
+                    return;
+                }
            }
-            i.Next = WeBcom.Next;
-            WeBcom = null;
         }
+      /*  public void Noibot(ref Webcom webcom)
+        {
+            if (webcom == head)
+            {
+                head = head.Next;
+                tail.Next = webcom;
+                tail = webcom;
+                tail.Next = null;
+                return;
+            }
+            if (webcom == tail)
+                return;
+            for (var web = head; web!=null; web=web.Next)
+            {
+                if (web.Next == webcom)
+                {
+                    Webcom temp = web.Next;
+                    web.Next = temp.Next;
+                    tail.Next = temp;
+                    tail = temp;
+                    tail.Next = null;
+                    return;
+                }
+            }
+        }*/
     }
     class HisoryList
     {
         public static HistoryControl historyControl = new HistoryControl();
+       
     }
+    /*class HasHistory
+    {
+        public static Hashtable hashHistory = new Hashtable();
+        /// <summary>
+        /// Doi cho Webcom vua moi duoc truy cap tu lich su, nhan nut back/ next len dau history list
+        /// </summary>
+        /// <param name="pagenumber"></param>
+        public static void Noibot(int pagenumber)
+        {
+            if (hashHistory[pagenumber] == HisoryList.historyControl.Tail || hashHistory[pagenumber] == HisoryList.historyControl.Head)
+            {
+                return;
+            }
+            ((Webcom)hashHistory[pagenumber - 1]).Next = ((Webcom)hashHistory[pagenumber]).Next;
+            HisoryList.historyControl.Tail = ((Webcom)hashHistory[pagenumber]);
+            ((Webcom)hashHistory[pagenumber]).Next = null;
+        }
+    }*/
 }
