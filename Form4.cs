@@ -34,26 +34,27 @@ namespace WEB
             tabPage1 = tabPage;
             this.chuyen = chuyen;
         }
-      
+        /// <summary>
+        /// Click chuot trai thi truy cap, chuot phai thi hien menustrip voi 2 option la truy cap va xoa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Label_Click(object sender, MouseEventArgs e)
         {
-           Label label = sender as Label;   
+       
            if (sender is Label Clicked_Label)
             {
+                int labelindex = (int)Clicked_Label.Tag;
+                string labelname = Clicked_Label.Text;
+                int index = ((Webcom)Weblist[labelindex]).Count;
+                Webcom temp = ((Webcom)Weblist[labelindex]);
                 if (e.Button == MouseButtons.Left)
                 {
-                     int labelindex = (int)Clicked_Label.Tag;
-                     string labelname = Clicked_Label.Text;
-
-
-                     int index = ((Webcom)Weblist[labelindex]).Count;
-                     Webcom temp = ((Webcom)Weblist[labelindex]);
+                    
                      //HisoryList.historyControl.Noibot(ref temp);
                      HisoryList.historyControl.TachHistory(ref temp);
                      temp.DateTime = DateTime.Now;
-                     Sender(ref temp);
-
-                     // Pagenumber.count--;
+                     Sender(ref temp);      
                      chuyen(tabPage1);
                 }
                 if (e.Button == MouseButtons.Right)
@@ -62,9 +63,8 @@ namespace WEB
                     System.Drawing.Point point = new System.Drawing.Point(e.Location.X, e.Location.Y);
                     contextMenu.MenuItems.Add("Access");
                     contextMenu.MenuItems.Add("Delete");
-                    contextMenu.Show(label, point);
-                    /*  contextMenu.= new System.Drawing.Point(MousePosition.X, MousePosition.Y);
-                      contextMenu.Visible = true;*/
+                    contextMenu.Show(Clicked_Label, point);
+                    
 
                   
                 }
