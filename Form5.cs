@@ -31,7 +31,7 @@ namespace WEB
             int count = 0;
             for (var i = FavControl.FavList.Head; i!=null; i=i.NextforFav1)
             {
-                MessageBox.Show("Heloo");
+                //MessageBox.Show("Heloo");
                 FavList.Add(i);
                 Label label = new Label();
                 label.Text = ((Webcom)i).Title + " --- Page number : " + i.Count.ToString()+ "\nDate Time: " + ((Webcom)i).DateTime.ToString();
