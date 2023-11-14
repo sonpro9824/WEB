@@ -48,6 +48,7 @@ namespace WEB
                 string labelname = Clicked_Label.Text;
                 int index = ((Webcom)Weblist[labelindex]).Count;
                 Webcom temp = ((Webcom)Weblist[labelindex]);
+                webcom = temp;
                 if (e.Button == MouseButtons.Left)
                 {
                     
@@ -59,18 +60,33 @@ namespace WEB
                 }
                 if (e.Button == MouseButtons.Right)
                 {
-                    ContextMenu contextMenu = new ContextMenu();
+                    ContextMenuStrip contextMenu = new ContextMenuStrip();
                     System.Drawing.Point point = new System.Drawing.Point(e.Location.X, e.Location.Y);
-                    contextMenu.MenuItems.Add("Access");
-                    contextMenu.MenuItems.Add("Delete");
+                    contextMenu.Items.Add("Access");
+                    contextMenu.Items.Add("Delete");
                     contextMenu.Show(Clicked_Label, point);
-                    
-
-                  
+                    contextMenu.ItemClicked += ContextMenu_ItemClicked;
                 }
             }
 
         }
+
+        private void ContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.ToString() == "Access")
+            {
+                //System.Windows.MessageBox.Show("Access!");
+                HisoryList.historyControl.TachHistory(ref webcom);
+                webcom.DateTime = DateTime.Now;
+                Sender(ref webcom);
+                chuyen(tabPage1);
+            }
+            if (e.ClickedItem.ToString() == "Delete")
+            {
+                HisoryList.historyControl.TachHistory(ref webcom);
+            }
+        }
+
         private void Form4_Load(object sender, EventArgs e)
         {
             label1.Text = "History list";

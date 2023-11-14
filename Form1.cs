@@ -53,9 +53,12 @@ namespace WEB
                 form2.Displayoption();
             else form2.Hideoption();
             form2.HoantraLabel(ref webcom);
-            form2.Show();
             form2.Dock = DockStyle.Fill;
+            form2.Show();
+           
+           
         }
+
         private void iconButton2_Click(object sender, EventArgs e)
         {
             Pagenumber.count++;
