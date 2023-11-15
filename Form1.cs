@@ -13,7 +13,7 @@ namespace WEB
     public delegate void Taotab(ref Webcom webcom);
     public delegate void ChuyenTab(TabPage tabPage);
     public delegate void RemoveCurrentTab();
-    public delegate void Refresh(ref TabPage tabPage);
+    public delegate void Refresh(ref Webcom webcom);
     public partial class Form1 : Form
     {
         //private int n = 1;
@@ -30,7 +30,27 @@ namespace WEB
             Webcom webcom = new Webcom();
             Addtab(ref webcom);
         }
-  
+        public void ChenTab(ref Webcom webcom)
+        {
+            tabControl1.SelectedTab.Controls.Clear();
+            Form2 form2 = new Form2(TabName, ref webcom);
+            form2.Text = form2.Webcom1.Title;
+            //TabPage tabPage = new TabPage { Text = webcom.Title };
+            tabControl1.SelectedTab.Text = webcom.Title;
+           /* ChuyenTab chuyenTab = new ChuyenTab(Chuyentab);
+            chuyenTab(tabPage);*/
+            //MessageBox.Show(webcom.Label_text1);
+            //n++;
+            //tabPage.BorderStyle = BorderStyle.Fixed3D;
+            form2.TopLevel = false;
+            form2.Parent = tabControl1.SelectedTab;
+            if (webcom.Title != "Title: Welcome home!")
+                form2.Displayoption();
+            else form2.Hideoption();
+            form2.HoantraLabel(ref webcom);
+            form2.Dock = DockStyle.Fill;
+            form2.Show();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -90,24 +110,34 @@ namespace WEB
         {
             
             TabPage tabPage = new TabPage { Text = "History" };
-            CreateForm4(tabPage);
+            CreateForm4(ref tabPage);
             //form4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
         }
-        public void CreateForm4(TabPage tabPage)
+        /// <summary>
+        /// Tao form 4
+        /// </summary>
+        /// <param name="tabPage"></param>
+        public void CreateForm4(ref TabPage tabPage)
         {
-            Form4 form4 = new Form4(Addtab, ref tabPage, Chuyentab, RemoveTab, CreateForm4);
+            Refresh chuyenTab = new Refresh(ChenTab);
+            Form4 form4 = new Form4(Addtab, ref tabPage, Chuyentab, RemoveTab, ChenTab);
             tabPage.BorderStyle = BorderStyle.Fixed3D;
             tabControl1.TabPages.Add(tabPage);
             form4.TopLevel = false;
             form4.Parent = tabPage;
             form4.Show();
             form4.Dock = DockStyle.Fill;
+         
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// Favorite chuc nang
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void iconButton4_Click(object sender, EventArgs e)
         {
             TabPage tabPage = new TabPage { Text = "Favorite list" };

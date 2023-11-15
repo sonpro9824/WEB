@@ -28,15 +28,15 @@ namespace WEB
         public ArrayList Weblist = new ArrayList();
         public Taotab Sender;
         public RemoveCurrentTab ReceiverRemove;
-        public ChuyenTab CreateNewForm;
-        public Form4(Taotab receiver, ref TabPage tabPage, ChuyenTab chuyen, RemoveCurrentTab remove, ChuyenTab createNewForm)
+        public Refresh swap;
+        public Form4(Taotab receiver, ref TabPage tabPage, ChuyenTab chuyen, RemoveCurrentTab remove, Refresh createNewForm)
         {
             InitializeComponent();
             Sender = receiver;
             tabPage1 = tabPage;
             this.chuyen = chuyen;
             ReceiverRemove = remove;
-            CreateNewForm = createNewForm;
+            swap = createNewForm;
         }
         /// <summary>
         /// Click chuot trai thi truy cap ngay tren tab hien tai, chuot phai thi hien menustrip voi 2 option la truy cap va xoa
@@ -59,9 +59,10 @@ namespace WEB
                      //HisoryList.historyControl.Noibot(ref temp);
                      HisoryList.historyControl.TachHistory(ref temp);
                      temp.DateTime = DateTime.Now;
-                     ReceiverRemove();
-                     Sender(ref temp);      
+                     //ReceiverRemove();
+                     //Sender(ref temp);      
                      //chuyen(tabPage1);
+                     swap(ref temp);
                 }
                 if (e.Button == MouseButtons.Right)
                 {
@@ -95,6 +96,7 @@ namespace WEB
 
         private void Form4_Load(object sender, EventArgs e)
         {
+
             label1.Text = "History list";
             int height = 70;
             int count = 0;
@@ -120,12 +122,11 @@ namespace WEB
                 label.MouseUp += Label_Click;
                 count++;
             }
-
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
-            CreateNewForm(tabPage1);
+        {  
+            //CreateNewForm(ref tabPage1);
         }
     }
 }
