@@ -31,7 +31,7 @@ namespace WEB
         }
         private void Form5_Load(object sender, EventArgs e)
         {
-            int height = 50;
+            int height = 80;
             int count = 0;
             for (var i = FavControl.FavList.Head; i!=null; i=i.NextforFav1)
             {
@@ -60,12 +60,13 @@ namespace WEB
                 count++;
             }
         }
-        
+        int lbindex = default;
         private void Label_Click(object sender, MouseEventArgs e)
         {
             if (sender is Label Clicked_Label)
             {
                 int labelindex = (int)Clicked_Label.Tag;
+                lbindex = labelindex;
                 string labelname = Clicked_Label.Text;
                 int index = ((Webcom)WebFavList[labelindex]).Count;
                 Webcom temp = ((Webcom)WebFavList[labelindex]);
@@ -109,12 +110,23 @@ namespace WEB
                 webcom.BookMark = false;
                 if (webcom.BookMark == true)
                 {
-                    ((Label)sender).BackColor = Color.Yellow;
+                    foreach (Control control in tabPage1.Controls)
+                    {
+                        if (control is Label)
+                        {
+                            MessageBox.Show("Heloo");
+                            Label lb = control as Label;
+                            if (Convert.ToInt32(lb.Tag) == lbindex)
+                            {
+                                lb.BackColor = Color.White;
+                            }
+                        }
+                    }
                 }
-                else
+                /*else
                 {
                     ((Label)sender).BackColor = Color.White;
-                }
+                }*/
                 FavControl.FavList.RemoveFav(ref webcom);
             }
         }

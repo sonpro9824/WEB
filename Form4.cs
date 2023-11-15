@@ -98,7 +98,7 @@ namespace WEB
         {
 
             label1.Text = "History list";
-            int height = 70;
+            int height = 80;
             int count = 0;
             //List<Label> list = new List<Label>();
             for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)

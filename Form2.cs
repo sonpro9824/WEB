@@ -449,6 +449,7 @@ namespace WEB
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            CheckBookmark();
             CreaterandomOption();
             GanLabel(ref Webcom);
         }
