@@ -155,6 +155,66 @@ namespace WEB
      
         }
 
-       
+        private void tabControl1_DragDrop(object sender, DragEventArgs e)
+        {
+            TabPage draggedTab = (TabPage)e.Data.GetData(typeof(TabPage));
+            int newIndex = GetHoverTabIndex(tabControl1.PointToClient(new Point(e.X, e.Y)));
+
+            if (newIndex >= 0)
+            {
+                tabControl1.TabPages.Remove(draggedTab);
+                tabControl1.TabPages.Insert(newIndex, draggedTab);
+                tabControl1.SelectedTab = draggedTab;
+            }
+        }
+        private Point point;
+        private void tabControl1_MouseDown(object sender, MouseEventArgs e)
+        {
+            point = new Point(e.X, e.Y);
+        }
+        private void tabControl1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                for (int i = 0; i < tabControl1.TabPages.Count; i++)
+                {
+                    Rectangle rect = tabControl1.GetTabRect(i);
+                    if (rect.Contains(point))
+                    {
+                        TabPage selectedTab = tabControl1.TabPages[i];
+                        tabControl1.DoDragDrop(selectedTab, DragDropEffects.All);
+                    }
+                }
+            }
+        }
+
+
+        private void tabControl1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void tabControl1_DragOver(object sender, DragEventArgs e)
+        {
+            Point clientPoint = tabControl1.PointToClient(new Point(e.X, e.Y));
+            int hoverIndex = GetHoverTabIndex(clientPoint);
+
+            if (hoverIndex >= 0 && hoverIndex < tabControl1.TabPages.Count)
+            {
+                tabControl1.SelectedIndex = hoverIndex;
+            }
+        }
+        private int GetHoverTabIndex(Point point)
+        {
+            for (int i = 0; i < tabControl1.TabPages.Count; i++)
+            {
+                Rectangle rect = tabControl1.GetTabRect(i);
+                if (rect.Contains(point))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }
