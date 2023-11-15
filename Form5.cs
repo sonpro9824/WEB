@@ -107,16 +107,32 @@ namespace WEB
             {
                 //System.Windows.MessageBox.Show("Deleted!");
                 webcom.BookMark = false;
-                if (webcom.BookMark == true)
+                /*if (webcom.BookMark == true)
                 {
                     ((Label)sender).BackColor = Color.Yellow;
                 }
                 else
                 {
-                    ((Label)sender).BackColor = Color.White;
-                }
+                    ((Label)sender).BackColor = Color.Black;
+                }*/
+                
+
                 FavControl.FavList.RemoveFav(ref webcom);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //CreateNewForm(ref tabPage1);
+            FavList.Clear();
+            foreach (Control control in this.Controls)
+            {
+                control.Enabled = false;
+                control.Visible = false;
+            }
+            label1.Visible = true;
+            label1.Enabled = true;
+            Form5_Load(sender, e);
         }
     }
 }
