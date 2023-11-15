@@ -122,7 +122,7 @@ namespace WEB
         {
             
             InitializeComponent();
-            button_bookmark.BackColor = Color.White;
+            button_bookmark.IconColor = Color.Black;
 
             Webcom = webcom;
           
@@ -172,12 +172,12 @@ namespace WEB
         }
         private void button_bookmark_Click(object sender, EventArgs e)
         {
-            if (button_bookmark.BackColor == Color.White)
+            if (button_bookmark.IconColor == Color.Black)
             {
-                button_bookmark.BackColor = Color.Yellow;
+                button_bookmark.IconColor = Color.Yellow;
             }
             else
-                button_bookmark.BackColor = Color.White;
+                button_bookmark.IconColor = Color.Black;
         }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -411,7 +411,7 @@ namespace WEB
         /// <param name="e"></param>
         private void button_bookmark_Click_1(object sender, EventArgs e)
         {
-            if (button_bookmark.BackColor==Color.White)
+            if (button_bookmark.IconColor==Color.Black)
             {
                 //button_bookmark.BackColor = Color.Yellow;
                 Webcom.BookMark = true;
@@ -434,11 +434,11 @@ namespace WEB
         {
             if (Webcom.BookMark == true)
             {
-                button_bookmark.BackColor = Color.Yellow;
+                button_bookmark.IconColor = Color.Yellow;
             }
             else 
             { 
-                button_bookmark.BackColor = Color.White;
+                button_bookmark.IconColor = Color.Black;
             }
         }
 
