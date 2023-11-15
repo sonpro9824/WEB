@@ -125,8 +125,17 @@ namespace WEB
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {  
+        {
             //CreateNewForm(ref tabPage1);
+            Weblist.Clear();
+            foreach (Control control in this.Controls)
+            {
+                control.Enabled = false;
+                control.Visible = false;
+            }
+            label1.Visible = true;
+            label1.Enabled = true;
+            Form4_Load(sender,e);
         }
     }
 }
