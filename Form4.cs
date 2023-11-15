@@ -28,13 +28,15 @@ namespace WEB
         public ArrayList Weblist = new ArrayList();
         public Taotab Sender;
         public RemoveCurrentTab ReceiverRemove;
-        public Form4(Taotab receiver, TabPage tabPage, ChuyenTab chuyen, RemoveCurrentTab remove)
+        public ChuyenTab CreateNewForm;
+        public Form4(Taotab receiver, ref TabPage tabPage, ChuyenTab chuyen, RemoveCurrentTab remove, ChuyenTab createNewForm)
         {
             InitializeComponent();
             Sender = receiver;
             tabPage1 = tabPage;
             this.chuyen = chuyen;
             ReceiverRemove = remove;
+            CreateNewForm = createNewForm;
         }
         /// <summary>
         /// Click chuot trai thi truy cap ngay tren tab hien tai, chuot phai thi hien menustrip voi 2 option la truy cap va xoa
@@ -78,7 +80,7 @@ namespace WEB
         {
             if (e.ClickedItem.ToString() == "Access in a new tab")
             {
-                //System.Windows.MessageBox.Show("Access!");
+                //System.Windows.MessageBox.Show("Accessed!");
                 HisoryList.historyControl.TachHistory(ref webcom);
                 webcom.DateTime = DateTime.Now;
                 Sender(ref webcom);
@@ -86,6 +88,7 @@ namespace WEB
             }
             if (e.ClickedItem.ToString() == "Delete")
             {
+                //System.Windows.MessageBox.Show("Deleted!");
                 HisoryList.historyControl.TachHistory(ref webcom);
             }
         }
@@ -118,6 +121,11 @@ namespace WEB
                 count++;
             }
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            CreateNewForm(tabPage1);
         }
     }
 }

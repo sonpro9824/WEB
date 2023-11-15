@@ -13,6 +13,7 @@ namespace WEB
     public delegate void Taotab(ref Webcom webcom);
     public delegate void ChuyenTab(TabPage tabPage);
     public delegate void RemoveCurrentTab();
+    public delegate void Refresh(ref TabPage tabPage);
     public partial class Form1 : Form
     {
         //private int n = 1;
@@ -89,16 +90,19 @@ namespace WEB
         {
             
             TabPage tabPage = new TabPage { Text = "History" };
-            Form4 form4 = new Form4(Addtab, tabPage, Chuyentab, RemoveTab);
+            CreateForm4(tabPage);
+            //form4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+        }
+        public void CreateForm4(TabPage tabPage)
+        {
+            Form4 form4 = new Form4(Addtab, ref tabPage, Chuyentab, RemoveTab, CreateForm4);
             tabPage.BorderStyle = BorderStyle.Fixed3D;
             tabControl1.TabPages.Add(tabPage);
             form4.TopLevel = false;
             form4.Parent = tabPage;
             form4.Show();
             form4.Dock = DockStyle.Fill;
-            //form4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
         }
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -120,5 +124,7 @@ namespace WEB
         {
      
         }
+
+       
     }
 }

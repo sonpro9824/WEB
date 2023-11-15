@@ -133,7 +133,8 @@ namespace WEB
             CheckBookmark();
             truyenDataform2 = truyenData;
             AddHistory();
-          
+            CheckBackButton();
+            CheckNextButton();
         }
         /// <summary>
         /// An di cac option
@@ -208,7 +209,8 @@ namespace WEB
                 AddHistory();
                 CheckBookmark();
                 EmptyNext();
-
+                CheckBackButton();
+                CheckNextButton();
             }
         }
         private void textBox1_DoubleClick(object sender, EventArgs e)
@@ -229,16 +231,9 @@ namespace WEB
             AddHistory();
             CheckBookmark();
             EmptyNext();
+            CheckBackButton();
+            CheckNextButton();
             //addFav();
-        }
-        private void checkBookMark(Webcom Webcom)
-        {
-            if (Webcom.BookMark == true)
-                button_bookmark.BackColor = Color.Yellow;
-            else
-            {
-                button_bookmark.BackColor = Color.White;
-            }
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -258,6 +253,8 @@ namespace WEB
             AddHistory();
             CheckBookmark();
             EmptyNext();
+            CheckBackButton();
+            CheckNextButton();
             //addFav();
         }
         private void label7_Click(object sender, EventArgs e)
@@ -278,6 +275,8 @@ namespace WEB
             AddHistory();
             CheckBookmark();
             EmptyNext();
+            CheckBackButton();
+            CheckNextButton();
             //addFav();
         }
         private void label4_Click(object sender, EventArgs e)
@@ -294,6 +293,8 @@ namespace WEB
             AddHistory();
             CheckBookmark();
             EmptyNext();
+            CheckBackButton();
+            CheckNextButton();
             //addFav();
         }
         private void label5_Click(object sender, EventArgs e)
@@ -310,6 +311,8 @@ namespace WEB
             AddHistory();
             CheckBookmark();
             EmptyNext();
+            CheckBackButton();
+            CheckNextButton();
             //addFav();
         }
         private void label1_Click(object sender, EventArgs e)
@@ -354,6 +357,8 @@ namespace WEB
             {
                 Displayoption();
             }
+            CheckBackButton();
+            CheckNextButton();
             // lui ve
         }
         private void button_next_Click(object sender, EventArgs e)
@@ -385,6 +390,8 @@ namespace WEB
             {
                 Displayoption();
             }
+            CheckBackButton();
+            CheckNextButton();
         }
         private void EmptyNext()
         {
@@ -444,6 +451,28 @@ namespace WEB
         {
             CreaterandomOption();
             GanLabel(ref Webcom);
+        }
+        public void CheckBackButton()
+        {
+            if (back.isEmpty())
+            {
+                button_back.Enabled = false;
+            }
+            else
+            {
+                button_back.Enabled = true;
+            }
+        }
+        public void CheckNextButton()
+        {
+            if (next.isEmpty())
+            {
+                button_next.Enabled = false;
+            }
+            else
+            {
+                button_next.Enabled = true;
+            }
         }
     }
   
