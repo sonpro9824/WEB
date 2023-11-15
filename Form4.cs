@@ -27,15 +27,17 @@ namespace WEB
         public static ArrayList buttons1 = new ArrayList();*/
         public ArrayList Weblist = new ArrayList();
         public Taotab Sender;
-        public Form4(Taotab receiver, TabPage tabPage, ChuyenTab chuyen)
+        public RemoveCurrentTab ReceiverRemove;
+        public Form4(Taotab receiver, TabPage tabPage, ChuyenTab chuyen, RemoveCurrentTab remove)
         {
             InitializeComponent();
             Sender = receiver;
             tabPage1 = tabPage;
             this.chuyen = chuyen;
+            ReceiverRemove = remove;
         }
         /// <summary>
-        /// Click chuot trai thi truy cap, chuot phai thi hien menustrip voi 2 option la truy cap va xoa
+        /// Click chuot trai thi truy cap ngay tren tab hien tai, chuot phai thi hien menustrip voi 2 option la truy cap va xoa
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,14 +57,15 @@ namespace WEB
                      //HisoryList.historyControl.Noibot(ref temp);
                      HisoryList.historyControl.TachHistory(ref temp);
                      temp.DateTime = DateTime.Now;
+                     ReceiverRemove();
                      Sender(ref temp);      
-                     chuyen(tabPage1);
+                     //chuyen(tabPage1);
                 }
                 if (e.Button == MouseButtons.Right)
                 {
                     ContextMenuStrip contextMenu = new ContextMenuStrip();
                     System.Drawing.Point point = new System.Drawing.Point(e.Location.X, e.Location.Y);
-                    contextMenu.Items.Add("Access");
+                    contextMenu.Items.Add("Access in a new tab");
                     contextMenu.Items.Add("Delete");
                     contextMenu.Show(Clicked_Label, point);
                     contextMenu.ItemClicked += ContextMenu_ItemClicked;
@@ -73,7 +76,7 @@ namespace WEB
 
         private void ContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            if (e.ClickedItem.ToString() == "Access")
+            if (e.ClickedItem.ToString() == "Access in a new tab")
             {
                 //System.Windows.MessageBox.Show("Access!");
                 HisoryList.historyControl.TachHistory(ref webcom);

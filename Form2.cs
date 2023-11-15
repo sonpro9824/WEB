@@ -75,25 +75,8 @@ namespace WEB
         /// Push trang hien tai dang duoc quan ly boi Webcom vao revious
         /// </summary>
         private void pushBack()
-        {
-           /* Webcom webcom = new Webcom();
-            webcom.Count = Convert.ToInt32(label7.Text);
-            webcom.Title = label1.Text;
-            GanLabel(ref webcom);
-            webcom.BookMark = Webcom.BookMark;*/
-            //label7.Text += webcom.Count.ToString();
+        {  
             back.Push(ref Webcom);
-            // add lich su
-          /*  Webcom webcom1 = new Webcom();
-            webcom1.Title = webcom.Title;
-            webcom1.Label_text1 = webcom.Label_text1;
-            webcom1.Label_text2 = webcom.Label_text2;
-            webcom1.Label_text3 = webcom.Label_text3;
-            webcom1.Label_text4 = webcom.Label_text4;
-            webcom1.Label_text5 = webcom.Label_text5;
-            webcom1.BookMark = Webcom.BookMark;
-            webcom1.Count = webcom.Count;*/
-            //HisoryList.historyControl.AddHistory(webcom1);
         }
         /// <summary>
         /// Tao doi tuong moi, cho Webcom tro toi, mac dinh bookmark se luon la false
@@ -125,7 +108,7 @@ namespace WEB
             return result.GenerateRandomString(n);
         }
         /// <summary>
-        /// Thay doi cac option, khong anh huong den Webcom
+        /// Thay doi cac option tren label, khong anh huong den Webcom
         /// </summary>
         private void CreaterandomOption()
         {
@@ -150,6 +133,7 @@ namespace WEB
             CheckBookmark();
             truyenDataform2 = truyenData;
             AddHistory();
+          
         }
         /// <summary>
         /// An di cac option
@@ -336,36 +320,7 @@ namespace WEB
         {
 
         }
-        /*private void button_bookmark_Click_1(object sender, EventArgs e)
-        {
-            if(button_bookmark.BackColor == Color.White)
-            {
-                button_bookmark.BackColor = Color.Yellow;
-                Webcom.BookMark = true;
-                addFav();
-            }
-            else
-            {
-                button_bookmark.BackColor= Color.White;
-                Webcom.BookMark = false;
-            }
-        }*/
-       /* private void addFav()
-        {
 
-            Webcom webcom1 = new Webcom();
-            webcom1.Title = label1.Text;
-            webcom1.Label_text1 = label2.Text;
-            //MessageBox.Show(webcom1.Title);
-            webcom1.Label_text2 = label3.Text;
-            webcom1.Label_text3 = label4.Text;
-            webcom1.Label_text4 = label5.Text;
-            webcom1.Label_text5 = label6.Text;
-            webcom1.Count = Convert.ToInt32(label7.Text);
-            webcom1.BookMark = Webcom.BookMark;
-            checkBookMark(webcom1);
-            Fav.fav.AddHistory(webcom1);
-        }*/
         private void label7_Click_1(object sender, EventArgs e)
         {
 
@@ -377,14 +332,6 @@ namespace WEB
                 MessageBox.Show("Back is empty", "Warning!");
                 return;
             }
-            //MessageBox.Show("Tao ne");
-            /*   Webcom webcom = new Webcom();
-               webcom.Count = Convert.ToInt32(label7.Text);
-               webcom.Title = label1.Text;
-               webcom.BookMark = Webcom.BookMark;
-               GanLabel(ref webcom);
-               //checkBookMark(webcom);
-               //label7.Text += webcom.Count.ToString();*/
             next.Push(ref Webcom);
             // day vo next
 
@@ -416,14 +363,6 @@ namespace WEB
                 MessageBox.Show("Next is empty", "Warning!");
                 return;
             }
-            /*  Webcom webcom = new Webcom();
-              webcom.Count = Convert.ToInt32(label7.Text);
-              webcom.Title = label1.Text;
-              webcom.BookMark = Webcom.BookMark;
-              GanLabel(ref webcom);
-              checkBookMark(webcom);
-              //label7.Text += webcom.Count.ToString();*/
-            //back.Push(Webcom);
             pushBack();
             Webcom web = null;
             next.Pop(ref web);
@@ -499,6 +438,12 @@ namespace WEB
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            CreaterandomOption();
+            GanLabel(ref Webcom);
         }
     }
   

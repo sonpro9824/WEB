@@ -12,6 +12,7 @@ namespace WEB
     public delegate void TruyenData(string text);
     public delegate void Taotab(ref Webcom webcom);
     public delegate void ChuyenTab(TabPage tabPage);
+    public delegate void RemoveCurrentTab();
     public partial class Form1 : Form
     {
         //private int n = 1;
@@ -44,6 +45,8 @@ namespace WEB
             form2.Text = form2.Webcom1.Title;
             TabPage tabPage = new TabPage { Text = webcom.Title};
             tabControl1.TabPages.Add(tabPage);
+            ChuyenTab chuyenTab = new ChuyenTab(Chuyentab);
+            chuyenTab(tabPage);
             //MessageBox.Show(webcom.Label_text1);
             //n++;
             tabPage.BorderStyle = BorderStyle.Fixed3D;
@@ -55,8 +58,6 @@ namespace WEB
             form2.HoantraLabel(ref webcom);
             form2.Dock = DockStyle.Fill;
             form2.Show();
-           
-           
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -70,21 +71,25 @@ namespace WEB
         {
             tabControl1.SelectedTab = tab;
         }
-
-        private void iconButton1_Click(object sender, EventArgs e)
+        public void RemoveTab()
         {
-            if (tabControl1.TabPages.Count!=0)
+            if (tabControl1.TabPages.Count != 0)
                 tabControl1.TabPages.Remove(tabControl1.SelectedTab);
             else
             {
+                MessageBox.Show("Out of tab!");
                 return;
             }
+        }
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            RemoveTab();
         }
         private void iconButton3_Click(object sender, EventArgs e)
         {
             
             TabPage tabPage = new TabPage { Text = "History" };
-            Form4 form4 = new Form4(Addtab, tabPage, Chuyentab);
+            Form4 form4 = new Form4(Addtab, tabPage, Chuyentab, RemoveTab);
             tabPage.BorderStyle = BorderStyle.Fixed3D;
             tabControl1.TabPages.Add(tabPage);
             form4.TopLevel = false;

@@ -207,6 +207,7 @@
             this.iconButton1.Size = new System.Drawing.Size(50, 50);
             this.iconButton1.TabIndex = 16;
             this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // panel1
             // 
@@ -238,7 +239,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "g";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
