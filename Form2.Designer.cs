@@ -51,7 +51,7 @@
             this.button_back.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
             this.button_back.IconColor = System.Drawing.Color.Black;
             this.button_back.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_back.Location = new System.Drawing.Point(3, 4);
+            this.button_back.Location = new System.Drawing.Point(12, 4);
             this.button_back.Name = "button_back";
             this.button_back.Size = new System.Drawing.Size(50, 50);
             this.button_back.TabIndex = 1;
@@ -64,7 +64,7 @@
             this.button_next.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
             this.button_next.IconColor = System.Drawing.Color.Black;
             this.button_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_next.Location = new System.Drawing.Point(59, 4);
+            this.button_next.Location = new System.Drawing.Point(62, 4);
             this.button_next.Name = "button_next";
             this.button_next.Size = new System.Drawing.Size(50, 50);
             this.button_next.TabIndex = 3;
@@ -73,10 +73,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(180, 17);
+            this.textBox1.Location = new System.Drawing.Point(176, 16);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(550, 29);
+            this.textBox1.Size = new System.Drawing.Size(523, 29);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "Search bar";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -90,7 +90,7 @@
             this.button_bookmark.IconChar = FontAwesome.Sharp.IconChar.Star;
             this.button_bookmark.IconColor = System.Drawing.Color.Black;
             this.button_bookmark.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_bookmark.Location = new System.Drawing.Point(736, 4);
+            this.button_bookmark.Location = new System.Drawing.Point(700, 7);
             this.button_bookmark.Name = "button_bookmark";
             this.button_bookmark.Size = new System.Drawing.Size(50, 50);
             this.button_bookmark.TabIndex = 6;
@@ -177,7 +177,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(748, 420);
+            this.label7.Location = new System.Drawing.Point(689, 433);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 24);
             this.label7.TabIndex = 14;
@@ -189,7 +189,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(698, 420);
+            this.label8.Location = new System.Drawing.Point(639, 433);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 24);
             this.label8.TabIndex = 15;
@@ -202,7 +202,7 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(115, 4);
+            this.iconButton1.Location = new System.Drawing.Point(112, 4);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(50, 50);
             this.iconButton1.TabIndex = 16;
@@ -211,6 +211,7 @@
             // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this.button_bookmark);
             this.panel1.Controls.Add(this.button_back);
@@ -218,17 +219,19 @@
             this.panel1.Controls.Add(this.iconButton1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.panel1.Location = new System.Drawing.Point(-1, -5);
+            this.panel1.Location = new System.Drawing.Point(-9, -5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(866, 54);
+            this.panel1.Size = new System.Drawing.Size(903, 60);
             this.panel1.TabIndex = 17;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Form2
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 453);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(877, 486);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);

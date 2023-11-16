@@ -14,11 +14,15 @@ namespace WEB
     public delegate void ChuyenTab(TabPage tabPage);
     public delegate void RemoveCurrentTab();
     public delegate void Refresh(ref Webcom webcom);
+    public delegate void menu();
     public partial class Form1 : Form
     {
+        Resizeform receiver;
+        public event menu resizef2;
         //private int n = 1;
         //string tabpagename = "";
- 
+        private Timer resizeTimer;
+        private bool resize = false;
         public void SetNameTabpage(string name)
         {
             tabControl1.SelectedTab.Tag = name;
@@ -29,11 +33,18 @@ namespace WEB
             InitializeComponent();
             Webcom webcom = new Webcom();
             Addtab(ref webcom);
+            resizeTimer = new Timer();
+            resizeTimer.Interval = 10;
+            resizeTimer.Tick += iconButton5_Click;
+            resizeTimer.Start();
         }
+
+        
+
         public void ChenTab(ref Webcom webcom)
         {
             tabControl1.SelectedTab.Controls.Clear();
-            Form2 form2 = new Form2(TabName, ref webcom);
+            Form2 form2 = new Form2(TabName, ref webcom, ref receiver);
             form2.Text = form2.Webcom1.Title;
             //TabPage tabPage = new TabPage { Text = webcom.Title };
             tabControl1.SelectedTab.Text = webcom.Title;
@@ -62,7 +73,7 @@ namespace WEB
         private void Addtab(ref Webcom webcom)
         {
            
-            Form2 form2 = new Form2(TabName,ref webcom);
+            Form2 form2 = new Form2(TabName,ref webcom, ref receiver);
             form2.Text = form2.Webcom1.Title;
             TabPage tabPage = new TabPage { Text = webcom.Title};
             tabControl1.TabPages.Add(tabPage);
@@ -215,6 +226,97 @@ namespace WEB
                 }
             }
             return -1;
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            
+            //resizef2?.Invoke();
+            resizeTimer.Start();
+            if(resize == false)
+            {
+                //tabControl1.Size = new Size(885, 500);
+                if (tabControl1.Width < 880)
+                    tabControl1.Width += 5;
+                if(tabControl1.Width >=880)
+                {
+                    resize = true;
+                    resizeTimer.Stop();
+                }
+            }
+            else
+            {
+                if(tabControl1.Width>770)
+                    tabControl1.Width -= 5;
+                if(tabControl1.Width <=770)
+                {
+                    resize = false;
+                    resizeTimer.Stop();
+                }
+            }
+            //receiver();
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            resizeTimer.Start();
+            if (resize == false)
+            {
+                //tabControl1.Size = new Size(885, 500);
+                if (tabControl1.Width < 880)
+                    tabControl1.Width += 5;
+                if (tabControl1.Width >= 880)
+                {
+                    resize = true;
+                    resizeTimer.Stop();
+                }
+            }
+            else
+            {
+                if (tabControl1.Width > 770)
+                    tabControl1.Width -= 5;
+                if (tabControl1.Width <= 770)
+                {
+                    resize = false;
+                    resizeTimer.Stop();
+                }
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            Pagenumber.count++;
+            Webcom webcom = new Webcom();
+            webcom.Count = Pagenumber.count;
+            Addtab(ref webcom);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            TabPage tabPage = new TabPage { Text = "History" };
+            CreateForm4(ref tabPage);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            TabPage tabPage = new TabPage { Text = "Favorite list" };
+            Form5 form5 = new Form5(Addtab, tabPage, Chuyentab, ChenTab);
+            tabPage.BorderStyle = BorderStyle.Fixed3D;
+            tabControl1.TabPages.Add(tabPage);
+            form5.TopLevel = false;
+            form5.Parent = tabPage;
+            form5.Show();
+            form5.Dock = DockStyle.Fill;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            RemoveTab();
         }
     }
 }

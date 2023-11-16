@@ -8,12 +8,18 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace WEB
 {
+    public delegate void Resizeform();
     public partial class Form2 : Form
     {
+        private Timer resizeTimer1 = new Timer();
+        private Timer resizeTimer2;
+        private bool resize1 = false;
+        private bool resize2 = false;
         Webcom Webcom = new Webcom();
         Stack back = new Stack();
         Stack next = new Stack();
@@ -118,10 +124,53 @@ namespace WEB
             label5.Text = Createrandom();
             label6.Text = Createrandom();
         }
-        public Form2(TruyenData truyenData, ref Webcom webcom)
+       /* public Form2()
+        {
+            InitializeComponent();
+            Form1 form1 = new Form1();
+            form1.resizef2 += resizeform2_1;
+            //form1.resizef2 += resizeform2_2;
+        }*/
+        private void resizeform2_2()
+        {
+
+        }
+        private void resizeform2_1()
+        {
+            //MessageBox.Show("ddd");
+            resizeTimer1.Start();
+            if (resize1 == false)
+            {
+                
+                if (button_bookmark.Location.X < 810)
+                {
+                    button_bookmark.Location = new Point(button_bookmark.Location.X+5, button_bookmark.Location.Y);
+                }
+                    
+                if (button_bookmark.Location.X >= 810)
+                {
+                    resize1 = true;
+                    resizeTimer1.Stop();
+                }
+            }
+            else
+            {
+                if (button_bookmark.Width > 700)
+                    button_bookmark.Location = new Point(button_bookmark.Location.X -5, button_bookmark.Location.Y);
+                if (button_bookmark.Location.X <= 700)
+                {
+                    resize1 = false;
+                    resizeTimer1.Stop();
+                }
+            }
+
+        }
+        public Form2(TruyenData truyenData, ref Webcom webcom, ref Resizeform receiver)
         {
             
             InitializeComponent();
+            Resizeform resizeform = new Resizeform(resizeform2_1);
+            receiver = resizeform;
             button_bookmark.IconColor = Color.Black;
 
             Webcom = webcom;
@@ -473,6 +522,11 @@ namespace WEB
             {
                 button_next.Enabled = true;
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
   
