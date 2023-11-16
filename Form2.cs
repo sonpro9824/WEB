@@ -425,7 +425,7 @@ namespace WEB
                 FavControl.FavList.RemoveFav(ref Webcom);
                 CheckBookmark();
             }
-            MessageBox.Show(Webcom.BookMark.ToString());
+            //MessageBox.Show(Webcom.BookMark.ToString());
         }
         /// <summary>
         /// Dung de doi mau bookmark 

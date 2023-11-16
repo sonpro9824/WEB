@@ -108,7 +108,7 @@ namespace WEB
             {
                 //System.Windows.MessageBox.Show("Deleted!");
                 webcom.BookMark = false;
-                if (webcom.BookMark == true)
+                /*if (webcom.BookMark == true)
                 {
                     foreach (Control control in tabPage1.Controls)
                     {
@@ -129,6 +129,9 @@ namespace WEB
                 }*/
                 FavControl.FavList.RemoveFav(ref webcom);
             }
+            label1.Visible = true;
+            label1.Enabled = true;
+            Form5_Load(sender, e);
         }
     }
 }

@@ -39,10 +39,10 @@
             // tabControl1
             // 
             this.tabControl1.AllowDrop = true;
-            this.tabControl1.Location = new System.Drawing.Point(48, 0);
+            this.tabControl1.Location = new System.Drawing.Point(140, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(809, 497);
+            this.tabControl1.Size = new System.Drawing.Size(793, 540);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragDrop);
@@ -124,7 +124,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(857, 498);
+            this.ClientSize = new System.Drawing.Size(936, 541);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.tabControl1);
