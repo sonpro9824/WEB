@@ -29,6 +29,7 @@ namespace WEB
             this.tabPage1 = tabPage;
             this.chuyen = chuyen;
             refresh = SwapTab;
+            label1.Tag = -1;
         }
         private void Form5_Load(object sender, EventArgs e)
         {
