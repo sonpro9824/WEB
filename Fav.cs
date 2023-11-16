@@ -28,6 +28,12 @@ namespace WEB
         }
         public void RemoveFav(ref Webcom webcom)
         {
+            if (head == webcom) 
+            { 
+                head = head.NextforFav1;
+                webcom.NextforFav1 = null;
+                return;
+            }
             for (var i=head; i!=null; i=i.NextforFav1)
             {
                 if (i.NextforFav1 == webcom)

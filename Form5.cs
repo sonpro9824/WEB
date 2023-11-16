@@ -17,10 +17,11 @@ namespace WEB
         public Taotab Sender;
         public ChuyenTab chuyen;
         TabPage tabPage1;
-        public static ArrayList FavList = new ArrayList();
+        //public ArrayList FavList = new ArrayList();
         public Refresh refresh;
         public ArrayList WebFavList = new ArrayList();
         Webcom webcom = new Webcom();
+        int lbindex = default;
         public Form5(Taotab receiver, TabPage tabPage, ChuyenTab chuyen, Refresh SwapTab)
         {
             InitializeComponent();
@@ -31,12 +32,12 @@ namespace WEB
         }
         private void Form5_Load(object sender, EventArgs e)
         {
-            int height = 50;
+            int height = 80;
             int count = 0;
             for (var i = FavControl.FavList.Head; i!=null; i=i.NextforFav1)
             {
                 //MessageBox.Show("Heloo");
-                FavList.Add(i);
+                WebFavList.Add(i);
                 Label label = new Label()
                 {
                     Tag = count
@@ -50,7 +51,7 @@ namespace WEB
                 {
                     label.BackColor = Color.White;
                 }
-                WebFavList.Add(i);
+                //WebFavList.Add(i);
                 label.AutoSize = true;
                 label.Location = new System.Drawing.Point(0, height);
                 height += 50;
@@ -60,12 +61,13 @@ namespace WEB
                 count++;
             }
         }
-        
+       
         private void Label_Click(object sender, MouseEventArgs e)
         {
             if (sender is Label Clicked_Label)
             {
                 int labelindex = (int)Clicked_Label.Tag;
+                lbindex = labelindex;
                 string labelname = Clicked_Label.Text;
                 int index = ((Webcom)WebFavList[labelindex]).Count;
                 Webcom temp = ((Webcom)WebFavList[labelindex]);
@@ -82,19 +84,24 @@ namespace WEB
                 }
                 if (e.Button == MouseButtons.Right)
                 {
-                     ContextMenuStrip contextMenu = new ContextMenuStrip();
-                     System.Drawing.Point point = new System.Drawing.Point(e.Location.X, e.Location.Y);
-                     contextMenu.Items.Add("Access in a new tab");
-                     contextMenu.Items.Add("Delete this book mark");
-                     contextMenu.Show(Clicked_Label, point);
-                     contextMenu.ItemClicked += ContextMenu_ItemClicked;
+                    ContextMenuStrip contextMenu = new ContextMenuStrip();
+                    System.Drawing.Point point = new System.Drawing.Point(e.Location.X, e.Location.Y);
+                    contextMenu.Items.Add("Access in a new tab");
+                    contextMenu.Items.Add("Delete this book mark");
+                    contextMenu.Items.Add("Mark this Web");
+                    if (temp.BookMark==true)
+                    {
+                        contextMenu.Items[2].Enabled = false;
+                    }
+                    contextMenu.Show(Clicked_Label, point);
+                    contextMenu.ItemClicked += ContextMenu_ItemClicked;
                 }
             }
         }
 
         private void ContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+            
             if (e.ClickedItem.ToString() == "Access in a new tab")
             {
                 //System.Windows.MessageBox.Show("Accessed!");
@@ -106,25 +113,43 @@ namespace WEB
             if (e.ClickedItem.ToString() == "Delete this book mark")
             {
                 //System.Windows.MessageBox.Show("Deleted!");
-                webcom.BookMark = false;
-                /*if (webcom.BookMark == true)
-                {
-                    ((Label)sender).BackColor = Color.Yellow;
-                }
-                else
-                {
-                    ((Label)sender).BackColor = Color.Black;
-                }*/
+                    webcom.BookMark = false;
+              
+                    foreach (Control control in this.Controls)
+                    {
+                        if (control is Label)
+                        {
+                            Label lb = control as Label;
+                            if (Convert.ToInt32(lb.Tag) == lbindex)
+                            {                            
+                                lb.BackColor = Color.White;
+                            }
+                        }
+                    }
+                    FavControl.FavList.RemoveFav(ref webcom);
                 
-
-                FavControl.FavList.RemoveFav(ref webcom);
+            }
+            if (e.ClickedItem.ToString() == "Mark this Web")
+            {
+                webcom.BookMark = true;
+                foreach (Control control in this.Controls)
+                {
+                    if (control is Label)
+                    {
+                        Label lb = control as Label;
+                        if (Convert.ToInt32(lb.Tag) == lbindex)
+                        {
+                            lb.BackColor = Color.Yellow;
+                        }
+                    }
+                }
+                FavControl.FavList.AddFav(ref webcom);
             }
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
             //CreateNewForm(ref tabPage1);
-            FavList.Clear();
+            WebFavList.Clear();
             foreach (Control control in this.Controls)
             {
                 control.Enabled = false;
@@ -132,6 +157,7 @@ namespace WEB
             }
             label1.Visible = true;
             label1.Enabled = true;
+            
             Form5_Load(sender, e);
         }
     }
