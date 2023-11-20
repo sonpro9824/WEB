@@ -58,7 +58,7 @@ namespace WEB
                     
                      //HisoryList.historyControl.Noibot(ref temp);
                      HisoryList.historyControl.TachHistory(ref temp);
-                     temp.DateTime = DateTime.Now;
+                     //temp.//DateTime = DateTime.Now;
                      //ReceiverRemove();
                      //Sender(ref temp);      
                      //chuyen(tabPage1);
@@ -83,7 +83,7 @@ namespace WEB
             {
                 //System.Windows.MessageBox.Show("Accessed!");
                 HisoryList.historyControl.TachHistory(ref webcom);
-                webcom.DateTime = DateTime.Now;
+                //webcom.//DateTime = DateTime.Now;
                 Sender(ref webcom);
                 chuyen(tabPage1);
             }
@@ -108,7 +108,7 @@ namespace WEB
                     Tag = count
                 };
                 Weblist.Add(i);
-                label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.DateTime.ToString() +"\n---------------------------------------";
+                label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.DateTime1.ToString("dd/MM/yyyy") + i.Datatime2.ToString("  HH:mm:ss" +"\n---------------------------------------");
                 //label1.Text = i.Count.ToString();
                 label.AutoSize = true;
                 label.Location = new System.Drawing.Point(0, height);
@@ -135,6 +135,11 @@ namespace WEB
             label1.Visible = true;
             label1.Enabled = true;
             Form4_Load(sender,e);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -42,6 +42,10 @@ namespace WEB
         /// </summary>
         public void AddHistory()
         {
+            //Webcom.Datatime2 = DateTime.Now;
+            Webcom.DateTime1 = dateTimePicker1.Value;
+            Webcom.Datatime2 = DateTime.Now;
+
             HisoryList.historyControl.AddHistory(ref Webcom);
         }
         /// <summary>
@@ -370,7 +374,7 @@ namespace WEB
             label7.Text = web.Count.ToString();
             HoantraLabel(ref web);
             Webcom = web;
-            Webcom.DateTime = DateTime.Now;
+            //Webcom.DateTime = DateTime.Now;
             CheckBookmark();
             HisoryList.historyControl.TachHistory(ref Webcom);
             AddHistory();
@@ -401,7 +405,7 @@ namespace WEB
             truyenDataform2(label1.Text);
             label7.Text = web.Count.ToString();
             Webcom = web;
-            Webcom.DateTime = DateTime.Now;
+            //Webcom.DateTime = DateTime.Now;
             CheckBookmark();
             HisoryList.historyControl.TachHistory(ref Webcom);
             AddHistory();

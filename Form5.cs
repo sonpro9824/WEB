@@ -43,7 +43,7 @@ namespace WEB
                 {
                     Tag = count
                 };
-                label.Text = ((Webcom)i).Title + " --- Page number : " + i.Count.ToString()+ "\nDate Time: " + ((Webcom)i).DateTime.ToString();
+                label.Text = ((Webcom)i).Title + " --- Page number : " + i.Count.ToString() + "\nDate Time: " + ((Webcom)i).DateTime1.ToString("dd/MM/yyyy"); //+  ((Webcom)i).Datatime2.ToString(" HH:mm:ss");
                 if (((Webcom)i).BookMark == true)
                 {
                     label.BackColor = Color.Yellow;
@@ -77,7 +77,7 @@ namespace WEB
                 {
 
                       HisoryList.historyControl.TachHistory(ref temp);
-                      temp.DateTime = DateTime.Now;
+                      //temp.DateTime = DateTime.Now;
                       //ReceiverRemove();
                       //Sender(ref temp);      
                       //chuyen(tabPage1);
@@ -107,7 +107,7 @@ namespace WEB
             {
                 //System.Windows.MessageBox.Show("Accessed!");
                 HisoryList.historyControl.TachHistory(ref webcom);
-                webcom.DateTime = DateTime.Now;
+                //webcom.DateTime = DateTime.Now;
                 Sender(ref webcom);
                 chuyen(tabPage1);
             }

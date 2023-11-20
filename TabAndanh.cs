@@ -299,7 +299,7 @@ namespace WEB
             label7.Text = web.Count.ToString();
             HoantraLabel(ref web);
             g_Webcom = web;
-            g_Webcom.DateTime = DateTime.Now;
+            //g_Webcom.DateTime = DateTime.Now;
             //CheckBookmark();
             //HisoryList.historyControl.TachHistory(ref g_Webcom);
             //AddHistory();
@@ -331,7 +331,7 @@ namespace WEB
             receiverDoiten(label1.Text);
             label7.Text = web.Count.ToString();
             g_Webcom = web;
-            g_Webcom.DateTime = DateTime.Now;
+            //g_Webcom.DateTime = DateTime.Now;
            // CheckBookmark();
            /* HisoryList.historyControl.TachHistory(ref Webcom);
             AddHistory();*/
@@ -354,6 +354,16 @@ namespace WEB
             //CheckBookmark();
             CreaterandomOption();
             GanLabel(ref g_Webcom);
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_bookmark_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

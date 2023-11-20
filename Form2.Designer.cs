@@ -42,6 +42,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             this.button_back.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
             this.button_back.IconColor = System.Drawing.Color.Black;
             this.button_back.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_back.Location = new System.Drawing.Point(12, 4);
+            this.button_back.Location = new System.Drawing.Point(12, 7);
             this.button_back.Name = "button_back";
             this.button_back.Size = new System.Drawing.Size(50, 50);
             this.button_back.TabIndex = 1;
@@ -64,7 +65,7 @@
             this.button_next.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
             this.button_next.IconColor = System.Drawing.Color.Black;
             this.button_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_next.Location = new System.Drawing.Point(62, 4);
+            this.button_next.Location = new System.Drawing.Point(56, 7);
             this.button_next.Name = "button_next";
             this.button_next.Size = new System.Drawing.Size(50, 50);
             this.button_next.TabIndex = 3;
@@ -90,7 +91,7 @@
             this.button_bookmark.IconChar = FontAwesome.Sharp.IconChar.Star;
             this.button_bookmark.IconColor = System.Drawing.Color.Black;
             this.button_bookmark.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_bookmark.Location = new System.Drawing.Point(700, 7);
+            this.button_bookmark.Location = new System.Drawing.Point(705, 7);
             this.button_bookmark.Name = "button_bookmark";
             this.button_bookmark.Size = new System.Drawing.Size(50, 50);
             this.button_bookmark.TabIndex = 6;
@@ -202,7 +203,7 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(112, 4);
+            this.iconButton1.Location = new System.Drawing.Point(112, 7);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(50, 50);
             this.iconButton1.TabIndex = 16;
@@ -213,6 +214,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.button_bookmark);
             this.panel1.Controls.Add(this.button_back);
             this.panel1.Controls.Add(this.button_next);
@@ -224,6 +226,15 @@
             this.panel1.Size = new System.Drawing.Size(903, 60);
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(761, 23);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(96, 22);
+            this.dateTimePicker1.TabIndex = 18;
             // 
             // Form2
             // 
@@ -269,5 +280,6 @@
         private System.Windows.Forms.Label label8;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

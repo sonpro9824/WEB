@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.button_bookmark = new FontAwesome.Sharp.IconButton();
             this.button_back = new FontAwesome.Sharp.IconButton();
             this.button_next = new FontAwesome.Sharp.IconButton();
@@ -49,33 +48,17 @@
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this.iconButton2);
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel1.Controls.Add(this.button_bookmark);
             this.panel1.Controls.Add(this.button_back);
             this.panel1.Controls.Add(this.button_next);
             this.panel1.Controls.Add(this.iconButton1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Location = new System.Drawing.Point(-9, -5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(903, 60);
             this.panel1.TabIndex = 18;
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 45;
-            this.iconButton2.Location = new System.Drawing.Point(756, 12);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(40, 40);
-            this.iconButton2.TabIndex = 27;
-            this.iconButton2.UseVisualStyleBackColor = true;
             // 
             // button_bookmark
             // 
@@ -84,19 +67,21 @@
             this.button_bookmark.IconChar = FontAwesome.Sharp.IconChar.Star;
             this.button_bookmark.IconColor = System.Drawing.Color.Black;
             this.button_bookmark.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_bookmark.Location = new System.Drawing.Point(700, 7);
+            this.button_bookmark.Location = new System.Drawing.Point(705, 7);
             this.button_bookmark.Name = "button_bookmark";
             this.button_bookmark.Size = new System.Drawing.Size(50, 50);
             this.button_bookmark.TabIndex = 6;
             this.button_bookmark.UseVisualStyleBackColor = true;
+            this.button_bookmark.Click += new System.EventHandler(this.button_bookmark_Click);
             // 
             // button_back
             // 
+            this.button_back.FlatAppearance.BorderSize = 0;
             this.button_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_back.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
             this.button_back.IconColor = System.Drawing.Color.Black;
             this.button_back.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_back.Location = new System.Drawing.Point(12, 4);
+            this.button_back.Location = new System.Drawing.Point(12, 7);
             this.button_back.Name = "button_back";
             this.button_back.Size = new System.Drawing.Size(50, 50);
             this.button_back.TabIndex = 1;
@@ -105,11 +90,12 @@
             // 
             // button_next
             // 
+            this.button_next.FlatAppearance.BorderSize = 0;
             this.button_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_next.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
             this.button_next.IconColor = System.Drawing.Color.Black;
             this.button_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_next.Location = new System.Drawing.Point(62, 4);
+            this.button_next.Location = new System.Drawing.Point(62, 7);
             this.button_next.Name = "button_next";
             this.button_next.Size = new System.Drawing.Size(50, 50);
             this.button_next.TabIndex = 3;
@@ -118,11 +104,12 @@
             // 
             // iconButton1
             // 
+            this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(112, 4);
+            this.iconButton1.Location = new System.Drawing.Point(112, 7);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(50, 50);
             this.iconButton1.TabIndex = 16;
@@ -145,7 +132,8 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(630, 460);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label8.Location = new System.Drawing.Point(639, 433);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 24);
             this.label8.TabIndex = 26;
@@ -155,7 +143,8 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(680, 460);
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(689, 433);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 24);
             this.label7.TabIndex = 25;
@@ -166,7 +155,8 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(332, 311);
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label6.Location = new System.Drawing.Point(341, 282);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(191, 24);
             this.label6.TabIndex = 24;
@@ -177,7 +167,8 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(332, 269);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label5.Location = new System.Drawing.Point(341, 236);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(191, 24);
             this.label5.TabIndex = 23;
@@ -188,7 +179,8 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(332, 226);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label4.Location = new System.Drawing.Point(341, 192);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(191, 24);
             this.label4.TabIndex = 22;
@@ -199,7 +191,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(332, 182);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label3.Location = new System.Drawing.Point(341, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(191, 24);
             this.label3.TabIndex = 21;
@@ -211,7 +204,8 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(332, 137);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label2.Location = new System.Drawing.Point(341, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(191, 24);
             this.label2.TabIndex = 20;
@@ -221,11 +215,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlText;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(44, 90);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(53, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(218, 28);
             this.label1.TabIndex = 19;
@@ -236,7 +230,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(849, 523);
+            this.BackColor = System.Drawing.SystemColors.ControlText;
+            this.ClientSize = new System.Drawing.Size(877, 608);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -273,6 +268,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }

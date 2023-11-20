@@ -13,22 +13,29 @@ namespace WEB
     public delegate void DoiTen(string text);
     public partial class ControlAndanh : Form
     {
+        private Timer resizeTimerInc;
+        private bool resizeInc = false;
+
+        public Timer ResizeTimerInc { get => resizeTimerInc; set => resizeTimerInc = value; }
+        public bool ResizeInc { get => resizeInc; set => resizeInc = value; }
+
         public ControlAndanh()
         {
             InitializeComponent();
             Webcom webcom = new Webcom();
             Addtab(ref webcom);
+            
            
         }
         public void ChuyenTab(TabPage tab)
         {
-            tabControl1.SelectedTab = tab;
+            tabControlInc.SelectedTab = tab;
         }
         public void Addtab(ref Webcom webcom)
         {
             string firsttitle = webcom.Title;
             TabPage tabPage = new TabPage();
-            tabControl1.TabPages.Add(tabPage);
+            tabControlInc.TabPages.Add(tabPage);
             ChuyenTab(tabPage);
             TabAndanh tabAndanh = new TabAndanh(DoitenTab, ref webcom);
             tabAndanh.TopLevel = false;
@@ -43,7 +50,7 @@ namespace WEB
         }
         public void DoitenTab(string text)
         {
-            tabControl1.SelectedTab.Text = text;
+            tabControlInc.SelectedTab.Text = text;
         }
         private void ControlAndanh_Load(object sender, EventArgs e)
         {
@@ -57,13 +64,43 @@ namespace WEB
 
         private void iconButton8_Click(object sender, EventArgs e)
         {
-            if (tabControl1.TabPages.Count != 0)
-                tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+            if (tabControlInc.TabPages.Count != 0)
+                tabControlInc.TabPages.Remove(tabControlInc.SelectedTab);
             else
             {
-                MessageBox.Show("Out of tab!");
+                //MessageBox.Show("Out of tab!");
                 return;
             }
         }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            //resizef2?.Invoke();
+            ResizeTimerInc.Start();
+            if (ResizeInc == false)
+            {
+                //tabControl1.Size = new Size(885, 500);
+                if (tabControlInc.Width < 880)
+                    tabControlInc.Width += 5;
+                if (tabControlInc.Width >= 880)
+                {
+                    ResizeInc = true;
+                    ResizeTimerInc.Stop();
+                }
+            }
+            else
+            {
+                if (tabControlInc.Width > 770)
+                    tabControlInc.Width -= 5;
+                if (tabControlInc.Width <= 770)
+                {
+                    ResizeInc = false;
+                    ResizeTimerInc.Stop();
+                }
+            }
+            //receiver();
+        }
+
+        
     }
 }

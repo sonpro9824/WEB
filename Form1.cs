@@ -18,7 +18,7 @@ namespace WEB
     public partial class Form1 : Form
     {
         Resizeform receiver;
-        public event menu resizef2;
+       //public event menu resizef2;
         //private int n = 1;
         //string tabpagename = "";
         private Timer resizeTimer;
@@ -33,10 +33,10 @@ namespace WEB
             InitializeComponent();
             Webcom webcom = new Webcom();
             Addtab(ref webcom);
-            resizeTimer = new Timer();
-            resizeTimer.Interval = 10;
-            resizeTimer.Tick += iconButton5_Click;
-            resizeTimer.Start();
+            ResizeTimer = new Timer();
+            ResizeTimer.Interval = 10;
+            ResizeTimer.Tick += iconButton5_Click;
+            ResizeTimer.Start();
         }
 
         
@@ -176,6 +176,10 @@ namespace WEB
             }
         }
         private Point point;
+
+        public Timer ResizeTimer { get => resizeTimer; set => resizeTimer = value; }
+        public bool Resize1 { get => resize; set => resize = value; }
+
         private void tabControl1_MouseDown(object sender, MouseEventArgs e)
         {
             point = new Point(e.X, e.Y);
@@ -229,16 +233,16 @@ namespace WEB
         {
             
             //resizef2?.Invoke();
-            resizeTimer.Start();
-            if(resize == false)
+            ResizeTimer.Start();
+            if(Resize1 == false)
             {
                 //tabControl1.Size = new Size(885, 500);
                 if (tabControl1.Width < 880)
                     tabControl1.Width += 5;
                 if(tabControl1.Width >=880)
                 {
-                    resize = true;
-                    resizeTimer.Stop();
+                    Resize1 = true;
+                    ResizeTimer.Stop();
                 }
             }
             else
@@ -247,8 +251,8 @@ namespace WEB
                     tabControl1.Width -= 5;
                 if(tabControl1.Width <=770)
                 {
-                    resize = false;
-                    resizeTimer.Stop();
+                    Resize1 = false;
+                    ResizeTimer.Stop();
                 }
             }
             //receiver();
@@ -261,16 +265,16 @@ namespace WEB
 
         private void label1_Click(object sender, EventArgs e)
         {
-            resizeTimer.Start();
-            if (resize == false)
+            ResizeTimer.Start();
+            if (Resize1 == false)
             {
                 //tabControl1.Size = new Size(885, 500);
                 if (tabControl1.Width < 880)
                     tabControl1.Width += 5;
                 if (tabControl1.Width >= 880)
                 {
-                    resize = true;
-                    resizeTimer.Stop();
+                    Resize1 = true;
+                    ResizeTimer.Stop();
                 }
             }
             else
@@ -279,8 +283,8 @@ namespace WEB
                     tabControl1.Width -= 5;
                 if (tabControl1.Width <= 770)
                 {
-                    resize = false;
-                    resizeTimer.Stop();
+                    Resize1 = false;
+                    ResizeTimer.Stop();
                 }
             }
         }
@@ -338,6 +342,11 @@ namespace WEB
             
             controlAndanh.Show();
             //this.Visible = false;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

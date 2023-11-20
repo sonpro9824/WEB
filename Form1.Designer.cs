@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
@@ -36,12 +37,13 @@
             this.iconDropDownButton1 = new FontAwesome.Sharp.IconDropDownButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +51,7 @@
             // 
             this.tabControl1.AllowDrop = true;
             this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.tabControl1.Location = new System.Drawing.Point(-1, -1);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(880, 541);
@@ -101,7 +103,7 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Xmark;
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(196, 210);
+            this.iconButton1.Location = new System.Drawing.Point(196, 260);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(40, 40);
             this.iconButton1.TabIndex = 4;
@@ -152,6 +154,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuText;
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.iconButton6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
@@ -170,16 +173,32 @@
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
+            // iconButton6
+            // 
+            this.iconButton6.BackColor = System.Drawing.SystemColors.MenuText;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.ForeColor = System.Drawing.SystemColors.Menu;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.HatCowboy;
+            this.iconButton6.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton6.Location = new System.Drawing.Point(196, 210);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Size = new System.Drawing.Size(40, 40);
+            this.iconButton6.TabIndex = 10;
+            this.iconButton6.UseVisualStyleBackColor = false;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Menu;
-            this.label5.Location = new System.Drawing.Point(89, 216);
+            this.label5.Location = new System.Drawing.Point(89, 266);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 24);
+            this.label5.Size = new System.Drawing.Size(77, 24);
             this.label5.TabIndex = 9;
-            this.label5.Text = "RemoveTab";
+            this.label5.Text = "Remove";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
@@ -230,18 +249,16 @@
             this.label1.Text = "Menu";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // iconButton6
+            // label6
             // 
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.PrayingHands;
-            this.iconButton6.IconColor = System.Drawing.Color.Black;
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton6.Location = new System.Drawing.Point(188, 256);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(59, 59);
-            this.iconButton6.TabIndex = 10;
-            this.iconButton6.Text = "Tab an  danh";
-            this.iconButton6.UseVisualStyleBackColor = true;
-            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Menu;
+            this.label6.Location = new System.Drawing.Point(89, 216);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 24);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Incognito";
             // 
             // Form1
             // 
@@ -252,6 +269,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TD-HS";
@@ -278,6 +296,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton iconButton6;
+        private System.Windows.Forms.Label label6;
     }
 }
 
