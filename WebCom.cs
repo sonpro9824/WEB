@@ -19,8 +19,8 @@ namespace WEB
         private Webcom NextforStack = null;
         private Webcom NextforFav = null;
         private bool bookMark = false;
-        private DateTime datatime2;
-        private DateTime dateTime;
+        private DateTime datatime2 = new DateTime();
+        private DateTime dateTime = new DateTime();
 
         public Webcom()
         {

@@ -16,7 +16,42 @@ namespace WEB
         
         internal Webcom Head { get => head; set => head = value; }
         internal Webcom Tail { get => tail; set => tail = value; }
+        public void Sort_Date()
+        {
+            if(Head == null) return;
+            bool swapp;
+            
+            do
+            {
+                swapp = false;
+                Webcom curr = Head;
+                Webcom pre = null;
+                Webcom next = Head.NextforHistory1;
+                while( next != null)
+                {
+                    if(curr.DateTime1 > next.DateTime1)
+                    {
+                        if (pre == null)
+                        {
+                            Head = next;
 
+                        }
+                        else
+                        {
+                            pre.NextforHistory1 = next;
+                        }
+                        curr.NextforHistory1 = next.NextforHistory1;
+                        next.NextforHistory1 = curr;
+                        swapp = true;
+                    }
+                    pre = curr;
+                    curr = curr.NextforHistory1;
+                    next = curr?.NextforHistory1;
+                }
+
+                
+            } while (swapp);
+        }
         public void AddHistory(ref Webcom webcom)
         {
             if (Head == null)

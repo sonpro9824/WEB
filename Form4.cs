@@ -14,6 +14,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Media.TextFormatting;
 using FontStyle = System.Drawing.FontStyle;
+using Point = System.Drawing.Point;
 
 namespace WEB
 {
@@ -97,30 +98,78 @@ namespace WEB
         private void Form4_Load(object sender, EventArgs e)
         {
             label1.Text = "History list";
-            int height = 80;
+            //int height = 80;
             int count = 0;
             //List<Label> list = new List<Label>();
+
+            HisoryList.historyControl.Sort_Date();
+            DateTime time = HisoryList.historyControl.Head.DateTime1;
+            int xG = 10;
+            int yG = 50;
             for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)
             {
-                webcom = (Webcom)i;
-                Label label = new Label
+                GroupBox group = new GroupBox();
+                group.Location = new System.Drawing.Point(xG, yG);
+                group.Text = time.ToString("dd/MM/yyyy");
+
+                int x = 10;
+                int y = 20;
+                
+                
+                while (i!= null && i.DateTime1 == time)
                 {
-                    Tag = count
-                };
-                Weblist.Add(i);
-                label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.DateTime1.ToString("dd/MM/yyyy") + i.Datatime2.ToString("  HH:mm:ss" +"\n---------------------------------------");
-                //label1.Text = i.Count.ToString();
-                label.AutoSize = true;
-                label.Location = new System.Drawing.Point(0, height);
-                label.Visible = true;
-           
-                label.Font = new Font("Calibri", 12, FontStyle.Regular);
-                this.Controls.Add(label);
-                this.Controls.Add(label1);
-                height += 70;
-                label.MouseUp += Label_Click;
-                count++;
+                    webcom = (Webcom)i;
+                    Label label = new Label
+                    {
+                        Tag = count
+                    };
+                    Weblist.Add(i);
+                    label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.Datatime2.ToString("  HH:mm:ss" + "\n---------------------------------------");
+
+                    label.AutoSize = true;
+                    label.Location = new System.Drawing.Point(x, y);
+                    label.Visible = true;
+                    label.Font = new Font("Calibri", 12, FontStyle.Regular);
+                   
+                    label.MouseUp += Label_Click;
+                    count++;
+                    group.Controls.Add(label);
+                    y += 70;
+
+                    i = i.NextforHistory1;
+                }
+                group.AutoSize = true;
+
+                this.Controls.Add(group);
+                yG = group.Bottom + 20;
+                //if(i != null)
+                time = i.DateTime1;
             }
+
+
+            //for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)
+            //{
+            //    webcom = (Webcom)i;
+            //    Label label = new Label
+            //    {
+            //        Tag = count
+            //    };
+            //    Weblist.Add(i);
+            //    label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.DateTime1.ToString("dd/MM/yyyy") + i.Datatime2.ToString("  HH:mm:ss" +"\n---------------------------------------");
+            //    //label1.Text = i.Count.ToString();
+            //    label.AutoSize = true;
+            //    label.Location = new System.Drawing.Point(0, height);
+            //    label.Visible = true;
+           
+            //    label.Font = new Font("Calibri", 12, FontStyle.Regular);
+            //    this.Controls.Add(label);
+            //    this.Controls.Add(label1);
+
+            //    height += 70;
+            //    label.MouseUp += Label_Click;
+            //    count++;
+            //    //list.Add(label);
+            //}
         }
 
         private void label1_Click(object sender, EventArgs e)
