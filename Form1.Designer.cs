@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +132,7 @@
             this.iconDropDownButton1.Name = "iconDropDownButton1";
             this.iconDropDownButton1.Size = new System.Drawing.Size(23, 23);
             this.iconDropDownButton1.Text = "iconDropDownButton1";
+            this.iconDropDownButton1.Click += new System.EventHandler(this.iconDropDownButton1_Click);
             // 
             // iconButton5
             // 
@@ -150,6 +152,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuText;
+            this.panel1.Controls.Add(this.iconButton6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -227,6 +230,19 @@
             this.label1.Text = "Menu";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // iconButton6
+            // 
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.PrayingHands;
+            this.iconButton6.IconColor = System.Drawing.Color.Black;
+            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton6.Location = new System.Drawing.Point(188, 256);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Size = new System.Drawing.Size(59, 59);
+            this.iconButton6.TabIndex = 10;
+            this.iconButton6.Text = "Tab an  danh";
+            this.iconButton6.UseVisualStyleBackColor = true;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -261,6 +277,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconButton iconButton6;
     }
 }
 

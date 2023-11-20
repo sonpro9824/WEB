@@ -56,27 +56,6 @@ namespace WEB
             label5.Text = webcom.Label_text4;
             label6.Text = webcom.Label_text5;
         }
-        /* private void pushBack()
-         {
-             Webcom webcom = new Webcom();
-             webcom.Count = Convert.ToInt32(label7.Text);
-             webcom.Title = label1.Text;
-             GanLabel(ref webcom);
-             //label7.Text += webcom.Count.ToString();
-             back.Push(webcom);
-
-
-
-             Webcom webcom1 = new Webcom();
-             webcom1.Title = webcom.Title;
-             webcom1.Label_text1 = webcom.Label_text1;
-             webcom1.Label_text2 = webcom.Label_text2;
-             webcom1.Label_text3 = webcom.Label_text3;
-             webcom1.Label_text4 = webcom.Label_text4;
-             webcom1.Label_text5 = webcom.Label_text5;
-             webcom1.Count = webcom.Count;
-             HisoryList.historyControl.AddHistory(webcom1);
-         }*/
         /// <summary>
         /// Push trang hien tai dang duoc quan ly boi Webcom vao revious
         /// </summary>
@@ -247,12 +226,9 @@ namespace WEB
                 Displayoption();
                 label1.Text = string.Empty;
                 label1.Text = "Finding resutl for: " + textBox1.Text;
-                //getTitle(label1.Text);
                 truyenDataform2(label1.Text);
                 textBox1.Text = string.Empty;
-                //label1.Text = string.Empty;
                 Pagenumber.count++;
-                //Webcom.Count = Pagenumber.count;
                 label7.Text = Pagenumber.count.ToString();
                 Sangtrang();
                 AddHistory();

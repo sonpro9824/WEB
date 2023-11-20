@@ -40,19 +40,16 @@ namespace WEB
         }
 
         
-
+        /// <summary>
+        /// Xoa form con hien tai va thay bang form 2
+        /// </summary>
+        /// <param name="webcom"></param>
         public void ChenTab(ref Webcom webcom)
         {
             tabControl1.SelectedTab.Controls.Clear();
             Form2 form2 = new Form2(TabName, ref webcom, ref receiver);
             form2.Text = form2.Webcom1.Title;
-            //TabPage tabPage = new TabPage { Text = webcom.Title };
             tabControl1.SelectedTab.Text = webcom.Title;
-           /* ChuyenTab chuyenTab = new ChuyenTab(Chuyentab);
-            chuyenTab(tabPage);*/
-            //MessageBox.Show(webcom.Label_text1);
-            //n++;
-            //tabPage.BorderStyle = BorderStyle.Fixed3D;
             form2.TopLevel = false;
             form2.Parent = tabControl1.SelectedTab;
             if (webcom.Title != "Title: Welcome home!")
@@ -317,6 +314,30 @@ namespace WEB
         private void label5_Click(object sender, EventArgs e)
         {
             RemoveTab();
+        }
+
+        private void iconDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+        /*    TabControl tabControl2 = new TabControl();
+            TabPage tabPage = new TabPage();
+            Form6 TabAndanh = new Form6();
+            tabPage.BorderStyle = BorderStyle.Fixed3D;
+            tabControl2.TabPages.Add(tabPage);
+            tabPage.Dock = DockStyle.Fill;
+            TabAndanh.TopLevel = false;
+            TabAndanh.Parent = tabPage;
+            tabControl2.Show();
+            tabControl2.
+            TabAndanh.Show();*/
+            ControlAndanh controlAndanh = new ControlAndanh();
+            
+            controlAndanh.Show();
+            //this.Visible = false;
         }
     }
 }

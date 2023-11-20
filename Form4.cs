@@ -96,7 +96,6 @@ namespace WEB
 
         private void Form4_Load(object sender, EventArgs e)
         {
-
             label1.Text = "History list";
             int height = 80;
             int count = 0;
