@@ -514,6 +514,8 @@ namespace WEB
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             Webcom.DateTime1 = dateTimePicker1.Value;
+            System.Windows.MessageBox.Show("Date set!", "Notice!");
+            //System.Windows.MessageBox.Show(Webcom.DateTime1.Hour.ToString() + Webcom.DateTime1.Minute.ToString() + Webcom.DateTime1.Second.ToString());
         }
     }
   

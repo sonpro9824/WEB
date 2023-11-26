@@ -19,7 +19,9 @@ namespace WEB
         private Webcom NextforStack = null;
         private Webcom NextforFav = null;
         private bool bookMark = false;
+     
         private DateTime datatime2 = new DateTime();
+       
         private DateTime dateTime = new DateTime();
 
         public Webcom()
@@ -57,7 +59,13 @@ namespace WEB
         public Webcom NextforHistory1 { get => NextforHistory; set => NextforHistory = value; }
         //public DateTime DateTime { get => DateTime1; set => DateTime1 = value; }
         public Webcom NextforFav1 { get => NextforFav; set => NextforFav = value; }
+        /// <summary>
+        /// Quan ly ngay, thang, nam
+        /// </summary>
         public DateTime DateTime1 { get => dateTime; set => dateTime = value; }
+        /// <summary>
+        /// Quan ly gio phut giay
+        /// </summary>
         public DateTime Datatime2 { get => datatime2; set => datatime2 = value; }
    
     }

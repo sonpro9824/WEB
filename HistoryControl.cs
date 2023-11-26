@@ -31,6 +31,11 @@ namespace WEB
                     Presult = temp;
                     Result = i;
                 }
+                else if (DateTime.Compare(i.DateTime1,Result.DateTime1)==0 && DateTime.Compare(i.Datatime2,Result.Datatime2)>0)
+                {
+                    Presult = temp;
+                    Result = i;
+                }
                 temp = i;
                 i = i.NextforHistory1;
             }

@@ -129,7 +129,7 @@ namespace WEB
 
                 while (i != null && i.DateTime1.Year == time.Year && i.DateTime1.Month==time.Month && i.DateTime1.Day == time.Day)
                 {
-                    System.Windows.MessageBox.Show("Im here!!");
+                    //System.Windows.MessageBox.Show("Im here!!");
                     webcom = (Webcom)i;
                     Label label = new Label
                     {
@@ -155,7 +155,7 @@ namespace WEB
                 this.Controls.Add(group);
                 yG = group.Bottom + 20;
                 if (i != null)
-                time = i.DateTime1;
+                    time = i.DateTime1;
             }
 
 
