@@ -59,6 +59,7 @@ namespace WEB
             label4.Text = webcom.Label_text3;
             label5.Text = webcom.Label_text4;
             label6.Text = webcom.Label_text5;
+            //dateTimePicker1.Value = webcom.DateTime1;
         }
         /// <summary>
         /// Push trang hien tai dang duoc quan ly boi Webcom vao revious
@@ -508,6 +509,11 @@ namespace WEB
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Webcom.DateTime1 = dateTimePicker1.Value;
         }
     }
   

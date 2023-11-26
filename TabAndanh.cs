@@ -24,6 +24,8 @@ namespace WEB
             button_bookmark.Enabled = false;
             receiverDoiten = receiver;
             g_Webcom = webcom;
+            label7.Visible = false;
+            label8.Visible = false;
         }
         private void GanLabel(ref Webcom webcom)
         {

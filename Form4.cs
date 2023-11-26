@@ -60,7 +60,7 @@ namespace WEB
                      //HisoryList.historyControl.Noibot(ref temp);
                      HisoryList.historyControl.TachHistory(ref temp);
                      //temp.//DateTime = DateTime.Now;
-                     //ReceiverRemove();
+                     ReceiverRemove();
                      //Sender(ref temp);      
                      //chuyen(tabPage1);
                      swap(ref temp);
@@ -103,10 +103,21 @@ namespace WEB
             //List<Label> list = new List<Label>();
 
             HisoryList.historyControl.Sort_Date();
+           /* for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)
+            {
+                System.Windows.Forms.MessageBox.Show(i.Title+ "\n" + i.DateTime1.ToString());
+            }*/
+            /* string textoutput = string.Empty;
+             for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)
+             {
+                 textoutput += i.Title + "\n";
+             }
+             System.Windows.MessageBox.Show(textoutput);*/
             DateTime time = HisoryList.historyControl.Head.DateTime1;
             int xG = 10;
             int yG = 50;
-            for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)
+            Webcom i = HisoryList.historyControl.Head;
+            while (i != null)
             {
                 GroupBox group = new GroupBox();
                 group.Location = new System.Drawing.Point(xG, yG);
@@ -114,15 +125,17 @@ namespace WEB
 
                 int x = 10;
                 int y = 20;
-                
-                
-                while (i!= null && i.DateTime1 == time)
+
+
+                while (i != null && i.DateTime1.Year == time.Year && i.DateTime1.Month==time.Month && i.DateTime1.Day == time.Day)
                 {
+                    System.Windows.MessageBox.Show("Im here!!");
                     webcom = (Webcom)i;
                     Label label = new Label
                     {
                         Tag = count
                     };
+                    count++;
                     Weblist.Add(i);
                     label.Text = i.Title + " ---- Page: " + i.Count.ToString() + "\nAcess Time: " + i.Datatime2.ToString("  HH:mm:ss" + "\n---------------------------------------");
 
@@ -130,9 +143,8 @@ namespace WEB
                     label.Location = new System.Drawing.Point(x, y);
                     label.Visible = true;
                     label.Font = new Font("Calibri", 12, FontStyle.Regular);
-                   
+
                     label.MouseUp += Label_Click;
-                    count++;
                     group.Controls.Add(label);
                     y += 70;
 
@@ -142,7 +154,7 @@ namespace WEB
 
                 this.Controls.Add(group);
                 yG = group.Bottom + 20;
-                //if(i != null)
+                if (i != null)
                 time = i.DateTime1;
             }
 
@@ -160,7 +172,7 @@ namespace WEB
             //    label.AutoSize = true;
             //    label.Location = new System.Drawing.Point(0, height);
             //    label.Visible = true;
-           
+
             //    label.Font = new Font("Calibri", 12, FontStyle.Regular);
             //    this.Controls.Add(label);
             //    this.Controls.Add(label1);
