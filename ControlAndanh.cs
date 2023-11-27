@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,7 +55,7 @@ namespace WEB
         }
         private void ControlAndanh_Load(object sender, EventArgs e)
         {
-           
+            
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,30 +76,37 @@ namespace WEB
 
         private void iconButton5_Click(object sender, EventArgs e)
         {
-            //resizef2?.Invoke();
-            ResizeTimerInc.Start();
-            if (ResizeInc == false)
+
+            try
             {
-                //tabControl1.Size = new Size(885, 500);
-                if (tabControlInc.Width < 880)
-                    tabControlInc.Width += 5;
-                if (tabControlInc.Width >= 880)
+                resizeTimerInc.Start();
+                if (ResizeInc == false)
                 {
-                    ResizeInc = true;
-                    ResizeTimerInc.Stop();
+                    //tabControl1.Size = new Size(885, 500);
+                    if (tabControlInc.Width < 880)
+                        tabControlInc.Width += 5;
+                    if (tabControlInc.Width >= 880)
+                    {
+                        ResizeInc = true;
+                        ResizeTimerInc.Stop();
+                    }
+                }
+                else
+                {
+                    if (tabControlInc.Width > 770)
+                        tabControlInc.Width -= 5;
+                    if (tabControlInc.Width <= 770)
+                    {
+                        ResizeInc = false;
+                        ResizeTimerInc.Stop();
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                if (tabControlInc.Width > 770)
-                    tabControlInc.Width -= 5;
-                if (tabControlInc.Width <= 770)
-                {
-                    ResizeInc = false;
-                    ResizeTimerInc.Stop();
-                }
+                MessageBox.Show(ex.Message, "Erorr");
             }
-            //receiver();
+            
         }
 
         

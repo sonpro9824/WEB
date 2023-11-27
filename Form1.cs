@@ -348,5 +348,12 @@ namespace WEB
         {
 
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            ControlAndanh controlAndanh = new ControlAndanh();
+
+            controlAndanh.Show();
+        }
     }
 }
