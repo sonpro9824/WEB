@@ -486,6 +486,8 @@ namespace WEB
             CheckBookmark();
             CreaterandomOption();
             GanLabel(ref Webcom);
+            HisoryList.historyControl.TachHistory(ref Webcom);
+            AddHistory();
         }
         public void CheckBackButton()
         {

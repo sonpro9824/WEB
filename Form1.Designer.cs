@@ -37,13 +37,13 @@
             this.iconDropDownButton1 = new FontAwesome.Sharp.IconDropDownButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,6 +173,17 @@
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Menu;
+            this.label6.Location = new System.Drawing.Point(89, 216);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 24);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Incognito";
+            // 
             // iconButton6
             // 
             this.iconButton6.BackColor = System.Drawing.SystemColors.MenuText;
@@ -248,17 +259,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Menu";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.Menu;
-            this.label6.Location = new System.Drawing.Point(89, 216);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 24);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Incognito";
             // 
             // Form1
             // 
