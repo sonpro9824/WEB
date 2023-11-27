@@ -20,9 +20,9 @@ namespace WEB
         private Webcom NextforFav = null;
         private bool bookMark = false;
      
-        private DateTime datatime2 = new DateTime();
+        private DateTime datatime2 = DateTime.Now;
        
-        private DateTime dateTime = new DateTime();
+        private DateTime dateTime = DateTime.Now;
 
         public Webcom()
         {

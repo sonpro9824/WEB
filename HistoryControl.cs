@@ -199,6 +199,10 @@ namespace WEB
                 {
                     i.NextforHistory1 = WeBcom.NextforHistory1;
                     WeBcom.NextforHistory1 = null;
+                    if (WeBcom==tail)
+                    {
+                        tail = i;
+                    }
                     //WeBcom.NextforHistory1 = null;
                    /* tail.Next = WeBcom;
                     tail = WeBcom;

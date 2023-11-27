@@ -43,9 +43,7 @@ namespace WEB
         public void AddHistory()
         {
             //Webcom.Datatime2 = DateTime.Now;
-            Webcom.DateTime1 = dateTimePicker1.Value;
-            Webcom.Datatime2 = DateTime.Now;
-
+            
             HisoryList.historyControl.AddHistory(ref Webcom);
         }
         /// <summary>
@@ -59,7 +57,9 @@ namespace WEB
             label4.Text = webcom.Label_text3;
             label5.Text = webcom.Label_text4;
             label6.Text = webcom.Label_text5;
-            //dateTimePicker1.Value = webcom.DateTime1;
+          //  MessageBox.Show(webcom.DateTime1.ToString());
+            dateTimePicker1.Value = webcom.DateTime1;
+            Webcom.Datatime2 = DateTime.Now;
         }
         /// <summary>
         /// Push trang hien tai dang duoc quan ly boi Webcom vao revious
@@ -79,6 +79,8 @@ namespace WEB
             webcon.BookMark = false;
             webcon.Count = Convert.ToInt32(label7.Text);
             Webcom = webcon;
+            Webcom.DateTime1 = dateTimePicker1.Value;
+            Webcom.Datatime2 = DateTime.Now;
         }
         private void pushNext()
         {
@@ -158,7 +160,7 @@ namespace WEB
             button_bookmark.IconColor = Color.Black;
 
             Webcom = webcom;
-          
+            Webcom.DateTime1 = dateTimePicker1.Value;
             label1.Text = Webcom.Title;
             CreaterandomOption();
             label7.Text = Webcom.Count.ToString();
@@ -368,17 +370,17 @@ namespace WEB
             next.Push(ref Webcom);
             // day vo next
 
-            Webcom web = null;
-            back.Pop(ref web);
-            label1.Text = web.Title;
+            //Webcom web = new Webcom();
+            back.Pop(ref Webcom);
+            label1.Text = Webcom.Title;
             truyenDataform2(label1.Text);
-            label7.Text = web.Count.ToString();
-            HoantraLabel(ref web);
-            Webcom = web;
+            label7.Text = Webcom.Count.ToString();
+            HoantraLabel(ref Webcom);
+            //Webcom = web;
             //Webcom.DateTime = DateTime.Now;
             CheckBookmark();
-            HisoryList.historyControl.TachHistory(ref Webcom);
-            AddHistory();
+            /*HisoryList.historyControl.TachHistory(ref Webcom);
+            AddHistory();*/
             if (label1.Text == "Title: Welcome home!")
             {
                 Hideoption();
@@ -399,17 +401,17 @@ namespace WEB
                 return;
             }
             pushBack();
-            Webcom web = null;
-            next.Pop(ref web);
-            HoantraLabel(ref web);
-            label1.Text = web.Title;
+            //Webcom web = null;
+            next.Pop(ref Webcom);
+            HoantraLabel(ref Webcom);
+            label1.Text = Webcom.Title;
             truyenDataform2(label1.Text);
-            label7.Text = web.Count.ToString();
-            Webcom = web;
+            label7.Text = Webcom.Count.ToString();
+            //Webcom = web;
             //Webcom.DateTime = DateTime.Now;
             CheckBookmark();
-            HisoryList.historyControl.TachHistory(ref Webcom);
-            AddHistory();
+            /*HisoryList.historyControl.TachHistory(ref Webcom);
+            AddHistory();*/
             //MessageBox.Show(label1.Text);
             if (label1.Text == "Title: Welcome home!")
             {
@@ -514,7 +516,7 @@ namespace WEB
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             Webcom.DateTime1 = dateTimePicker1.Value;
-            System.Windows.MessageBox.Show("Date set!", "Notice!");
+            //System.Windows.MessageBox.Show("Date set!", "Notice!");
             //System.Windows.MessageBox.Show(Webcom.DateTime1.Hour.ToString() + Webcom.DateTime1.Minute.ToString() + Webcom.DateTime1.Second.ToString());
         }
     }
