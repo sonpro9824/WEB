@@ -160,7 +160,7 @@ namespace WEB
             button_bookmark.IconColor = Color.Black;
 
             Webcom = webcom;
-            Webcom.DateTime1 = dateTimePicker1.Value;
+            //Webcom.DateTime1 = dateTimePicker1.Value;
             label1.Text = Webcom.Title;
             CreaterandomOption();
             label7.Text = Webcom.Count.ToString();
@@ -372,6 +372,7 @@ namespace WEB
 
             //Webcom web = new Webcom();
             back.Pop(ref Webcom);
+            Webcom.Datatime2 = DateTime.Now;
             label1.Text = Webcom.Title;
             truyenDataform2(label1.Text);
             label7.Text = Webcom.Count.ToString();
@@ -379,8 +380,8 @@ namespace WEB
             //Webcom = web;
             //Webcom.DateTime = DateTime.Now;
             CheckBookmark();
-            /*HisoryList.historyControl.TachHistory(ref Webcom);
-            AddHistory();*/
+            HisoryList.historyControl.TachHistory(ref Webcom);
+            AddHistory();
             if (label1.Text == "Title: Welcome home!")
             {
                 Hideoption();
@@ -403,6 +404,7 @@ namespace WEB
             pushBack();
             //Webcom web = null;
             next.Pop(ref Webcom);
+            Webcom.Datatime2 = DateTime.Now;
             HoantraLabel(ref Webcom);
             label1.Text = Webcom.Title;
             truyenDataform2(label1.Text);
@@ -410,8 +412,8 @@ namespace WEB
             //Webcom = web;
             //Webcom.DateTime = DateTime.Now;
             CheckBookmark();
-            /*HisoryList.historyControl.TachHistory(ref Webcom);
-            AddHistory();*/
+            HisoryList.historyControl.TachHistory(ref Webcom);
+            AddHistory();
             //MessageBox.Show(label1.Text);
             if (label1.Text == "Title: Welcome home!")
             {

@@ -136,6 +136,10 @@ namespace WEB
                 presult.NextforHistory1 = head;
                 result.NextforHistory1 = head.NextforHistory1;
                 head.NextforHistory1 = temp; 
+                if (result==tail)
+                {
+                    tail = head;
+                }
             }
             head = result;
             i = head.NextforHistory1;
@@ -153,9 +157,9 @@ namespace WEB
                     i.NextforHistory1 = temp;
                     prei.NextforHistory1 = result;
                     //i = result;
-                    if (i == head)
+                    if (result == tail)
                     {
-                        head = result;
+                        tail = i;
                     }
                 }
                 i = result.NextforHistory1;
@@ -192,6 +196,7 @@ namespace WEB
             {
                 head = head.NextforHistory1;
                 WeBcom.NextforHistory1 = null;
+                return;
             }
            for (var i = head; i!=null; i=i.NextforHistory1)
            {
@@ -211,53 +216,11 @@ namespace WEB
                 }
            }
         }
-      /*  public void Noibot(ref Webcom webcom)
-        {
-            if (webcom == head)
-            {
-                head = head.Next;
-                tail.Next = webcom;
-                tail = webcom;
-                tail.Next = null;
-                return;
-            }
-            if (webcom == tail)
-                return;
-            for (var web = head; web!=null; web=web.Next)
-            {
-                if (web.Next == webcom)
-                {
-                    Webcom temp = web.Next;
-                    web.Next = temp.Next;
-                    tail.Next = temp;
-                    tail = temp;
-                    tail.Next = null;
-                    return;
-                }
-            }
-        }*/
     }
     class HisoryList
     {
         public static HistoryControl historyControl = new HistoryControl();
        
     }
-    /*class HasHistory
-    {
-        public static Hashtable hashHistory = new Hashtable();
-        /// <summary>
-        /// Doi cho Webcom vua moi duoc truy cap tu lich su, nhan nut back/ next len dau history list
-        /// </summary>
-        /// <param name="pagenumber"></param>
-        public static void Noibot(int pagenumber)
-        {
-            if (hashHistory[pagenumber] == HisoryList.historyControl.Tail || hashHistory[pagenumber] == HisoryList.historyControl.Head)
-            {
-                return;
-            }
-            ((Webcom)hashHistory[pagenumber - 1]).Next = ((Webcom)hashHistory[pagenumber]).Next;
-            HisoryList.historyControl.Tail = ((Webcom)hashHistory[pagenumber]);
-            ((Webcom)hashHistory[pagenumber]).Next = null;
-        }
-    }*/
+   
 }

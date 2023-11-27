@@ -101,12 +101,12 @@ namespace WEB
             //int height = 80;
             int count = 0;
             //List<Label> list = new List<Label>();
-
-            HisoryList.historyControl.Sort_Date();
-           /* for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)
+            for (var j = HisoryList.historyControl.Head; j != null; j = j.NextforHistory1)
             {
-                System.Windows.Forms.MessageBox.Show(i.Title+ "\n" + i.DateTime1.ToString());
-            }*/
+                System.Windows.Forms.MessageBox.Show(j.Title+ "\n" + j.DateTime1.ToString());
+            }
+            HisoryList.historyControl.Sort_Date();
+           
             /* string textoutput = string.Empty;
              for (var i = HisoryList.historyControl.Head; i != null; i = i.NextforHistory1)
              {
