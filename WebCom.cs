@@ -19,6 +19,7 @@ namespace WEB
         private Webcom NextforStack = null;
         private Webcom NextforFav = null;
         private bool bookMark = false;
+        private string tenThuMuc = string.Empty;
      
         private DateTime datatime2 = DateTime.Now;
        
@@ -67,7 +68,7 @@ namespace WEB
         /// Quan ly gio phut giay
         /// </summary>
         public DateTime Datatime2 { get => datatime2; set => datatime2 = value; }
-   
+        public string TenThuMuc { get => tenThuMuc; set => tenThuMuc = value; }
     }
     class Stack
     {

@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_back = new FontAwesome.Sharp.IconButton();
-            this.button_next = new FontAwesome.Sharp.IconButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button_bookmark = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,37 +37,24 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button_bookmark = new FontAwesome.Sharp.IconButton();
+            this.button_back = new FontAwesome.Sharp.IconButton();
+            this.button_next = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.panel_thuMuc = new System.Windows.Forms.Panel();
+            this.button_xong = new System.Windows.Forms.Button();
+            this.button_xoa = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox_thuMuc = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel_thuMuc.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button_back
-            // 
-            this.button_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_back.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
-            this.button_back.IconColor = System.Drawing.Color.Black;
-            this.button_back.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_back.Location = new System.Drawing.Point(12, 7);
-            this.button_back.Name = "button_back";
-            this.button_back.Size = new System.Drawing.Size(50, 50);
-            this.button_back.TabIndex = 1;
-            this.button_back.UseVisualStyleBackColor = true;
-            this.button_back.Click += new System.EventHandler(this.button_back_Click);
-            // 
-            // button_next
-            // 
-            this.button_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_next.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
-            this.button_next.IconColor = System.Drawing.Color.Black;
-            this.button_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_next.Location = new System.Drawing.Point(56, 7);
-            this.button_next.Name = "button_next";
-            this.button_next.Size = new System.Drawing.Size(50, 50);
-            this.button_next.TabIndex = 3;
-            this.button_next.UseVisualStyleBackColor = true;
-            this.button_next.Click += new System.EventHandler(this.button_next_Click);
             // 
             // textBox1
             // 
@@ -83,20 +67,6 @@
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.DoubleClick += new System.EventHandler(this.textBox1_DoubleClick);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            // 
-            // button_bookmark
-            // 
-            this.button_bookmark.FlatAppearance.BorderSize = 0;
-            this.button_bookmark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_bookmark.IconChar = FontAwesome.Sharp.IconChar.Star;
-            this.button_bookmark.IconColor = System.Drawing.Color.Black;
-            this.button_bookmark.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.button_bookmark.Location = new System.Drawing.Point(705, 7);
-            this.button_bookmark.Name = "button_bookmark";
-            this.button_bookmark.Size = new System.Drawing.Size(50, 50);
-            this.button_bookmark.TabIndex = 6;
-            this.button_bookmark.UseVisualStyleBackColor = true;
-            this.button_bookmark.Click += new System.EventHandler(this.button_bookmark_Click_1);
             // 
             // label1
             // 
@@ -197,19 +167,6 @@
             this.label8.Text = "Page:";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // iconButton1
-            // 
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(112, 7);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(50, 50);
-            this.iconButton1.TabIndex = 16;
-            this.iconButton1.UseVisualStyleBackColor = true;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
@@ -237,6 +194,162 @@
             this.dateTimePicker1.TabIndex = 18;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
+            // button_bookmark
+            // 
+            this.button_bookmark.FlatAppearance.BorderSize = 0;
+            this.button_bookmark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_bookmark.IconChar = FontAwesome.Sharp.IconChar.Star;
+            this.button_bookmark.IconColor = System.Drawing.Color.Black;
+            this.button_bookmark.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.button_bookmark.Location = new System.Drawing.Point(705, 7);
+            this.button_bookmark.Name = "button_bookmark";
+            this.button_bookmark.Size = new System.Drawing.Size(50, 50);
+            this.button_bookmark.TabIndex = 6;
+            this.button_bookmark.UseVisualStyleBackColor = true;
+            this.button_bookmark.Click += new System.EventHandler(this.button_bookmark_Click_1);
+            // 
+            // button_back
+            // 
+            this.button_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_back.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
+            this.button_back.IconColor = System.Drawing.Color.Black;
+            this.button_back.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.button_back.Location = new System.Drawing.Point(12, 7);
+            this.button_back.Name = "button_back";
+            this.button_back.Size = new System.Drawing.Size(50, 50);
+            this.button_back.TabIndex = 1;
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
+            // 
+            // button_next
+            // 
+            this.button_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_next.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
+            this.button_next.IconColor = System.Drawing.Color.Black;
+            this.button_next.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.button_next.Location = new System.Drawing.Point(56, 7);
+            this.button_next.Name = "button_next";
+            this.button_next.Size = new System.Drawing.Size(50, 50);
+            this.button_next.TabIndex = 3;
+            this.button_next.UseVisualStyleBackColor = true;
+            this.button_next.Click += new System.EventHandler(this.button_next_Click);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(112, 7);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(50, 50);
+            this.iconButton1.TabIndex = 16;
+            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // panel_thuMuc
+            // 
+            this.panel_thuMuc.BackColor = System.Drawing.Color.MistyRose;
+            this.panel_thuMuc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_thuMuc.Controls.Add(this.label11);
+            this.panel_thuMuc.Controls.Add(this.label10);
+            this.panel_thuMuc.Controls.Add(this.textBox_thuMuc);
+            this.panel_thuMuc.Controls.Add(this.comboBox1);
+            this.panel_thuMuc.Controls.Add(this.iconButton2);
+            this.panel_thuMuc.Controls.Add(this.label9);
+            this.panel_thuMuc.Controls.Add(this.button_xoa);
+            this.panel_thuMuc.Controls.Add(this.button_xong);
+            this.panel_thuMuc.Location = new System.Drawing.Point(500, 63);
+            this.panel_thuMuc.Name = "panel_thuMuc";
+            this.panel_thuMuc.Size = new System.Drawing.Size(351, 168);
+            this.panel_thuMuc.TabIndex = 18;
+            // 
+            // button_xong
+            // 
+            this.button_xong.BackColor = System.Drawing.Color.Tan;
+            this.button_xong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_xong.Location = new System.Drawing.Point(186, 117);
+            this.button_xong.Name = "button_xong";
+            this.button_xong.Size = new System.Drawing.Size(59, 36);
+            this.button_xong.TabIndex = 0;
+            this.button_xong.Text = "Xong";
+            this.button_xong.UseVisualStyleBackColor = false;
+            this.button_xong.Click += new System.EventHandler(this.button_xong_Click);
+            // 
+            // button_xoa
+            // 
+            this.button_xoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_xoa.Location = new System.Drawing.Point(277, 117);
+            this.button_xoa.Name = "button_xoa";
+            this.button_xoa.Size = new System.Drawing.Size(59, 36);
+            this.button_xoa.TabIndex = 1;
+            this.button_xoa.Text = "Xóa";
+            this.button_xoa.UseVisualStyleBackColor = true;
+            this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(14, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(167, 24);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Đã thêm dấu trang";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.iconButton2.IconColor = System.Drawing.Color.Black;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 25;
+            this.iconButton2.Location = new System.Drawing.Point(316, 11);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(20, 20);
+            this.iconButton2.TabIndex = 3;
+            this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(132, 47);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(204, 24);
+            this.comboBox1.TabIndex = 4;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // textBox_thuMuc
+            // 
+            this.textBox_thuMuc.Location = new System.Drawing.Point(132, 77);
+            this.textBox_thuMuc.Name = "textBox_thuMuc";
+            this.textBox_thuMuc.Size = new System.Drawing.Size(204, 22);
+            this.textBox_thuMuc.TabIndex = 5;
+            this.textBox_thuMuc.TextChanged += new System.EventHandler(this.textBox_thuMuc_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(14, 50);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 21);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Thư mục";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(14, 78);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(112, 21);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Thêm thư mục";
+            // 
             // Form2
             // 
             this.AllowDrop = true;
@@ -245,6 +358,7 @@
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(877, 486);
+            this.Controls.Add(this.panel_thuMuc);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -260,6 +374,8 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel_thuMuc.ResumeLayout(false);
+            this.panel_thuMuc.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +398,14 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Panel panel_thuMuc;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button_xoa;
+        private System.Windows.Forms.Button button_xong;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox_thuMuc;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -122,9 +122,9 @@ namespace WEB
                 GroupBox group = new GroupBox();
                 group.Location = new System.Drawing.Point(xG, yG);
                 group.Text = time.ToString("dd/MM/yyyy");
-
+                group.Font = new Font("Calibri", 14, FontStyle.Bold);
                 int x = 10;
-                int y = 20;
+                int y = 40;
 
 
                 while (i != null && i.DateTime1.Year == time.Year && i.DateTime1.Month==time.Month && i.DateTime1.Day == time.Day)

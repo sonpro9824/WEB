@@ -9,11 +9,13 @@ using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace WEB
 {
     public partial class Form5 : Form
     {
+
         public Taotab Sender;
         public ChuyenTab chuyen;
         TabPage tabPage1;
@@ -33,34 +35,86 @@ namespace WEB
         }
         private void Form5_Load(object sender, EventArgs e)
         {
-            int height = 80;
+            FavControl.FavList.Sort_Name();
             int count = 0;
-            for (var i = FavControl.FavList.Head; i!=null; i=i.NextforFav1)
+            string name = FavControl.FavList.Head.TenThuMuc;
+            int xG = 10;
+            int yG = 50;
+            Webcom i = FavControl.FavList.Head;
+            while (i != null)
             {
-                //MessageBox.Show("Heloo");
-                WebFavList.Add(i);
-                Label label = new Label()
+                GroupBox group = new GroupBox();
+                group.Location = new System.Drawing.Point(xG, yG);
+                group.Text = name;
+                group.Font = new Font("Calibri", 14, FontStyle.Bold);
+                int x = 10;
+                int y = 40;
+
+                while(i != null && i.TenThuMuc == name)
                 {
-                    Tag = count
-                };
-                label.Text = ((Webcom)i).Title + " --- Page number : " + i.Count.ToString() + "\nDate Time: " + ((Webcom)i).DateTime1.ToString("dd/MM/yyyy"); //+  ((Webcom)i).Datatime2.ToString(" HH:mm:ss");
-                if (((Webcom)i).BookMark == true)
-                {
-                    label.BackColor = Color.Yellow;
+                    WebFavList.Add(i);
+                    Label label = new Label()
+                    {
+                        Tag = count
+                    };
+                    count++;
+                    label.Text = ((Webcom)i).Title + " --- Page number : " + i.Count.ToString() + "\nDate Time: " + ((Webcom)i).DateTime1.ToString("dd/MM/yyyy"); //+  ((Webcom)i).Datatime2.ToString(" HH:mm:ss");
+                    if (((Webcom)i).BookMark == true)
+                    {
+                        label.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        label.BackColor = Color.White;
+                    }
+                    //WebFavList.Add(i);
+                    label.AutoSize = true;
+                    label.Location = new System.Drawing.Point(x,y);
+                    label.Visible = true;
+                    label.Font = new Font("Calibri", 12, FontStyle.Regular);
+                    
+                    label.MouseUp += Label_Click;
+                    group.Controls.Add(label);
+                    y += 70;
+                    i = i.NextforFav1;
                 }
-                else
-                {
-                    label.BackColor = Color.White;
-                }
-                //WebFavList.Add(i);
-                label.AutoSize = true;
-                label.Location = new System.Drawing.Point(0, height);
-                height += 50;
-                label.Visible = true;
-                this.Controls.Add(label);
-                label.MouseUp += Label_Click;
-                count++;
+                group.AutoSize = true;
+
+                this.Controls.Add(group);
+                yG = group.Bottom + 20;
+                if (i != null)
+                    name = i.TenThuMuc;
             }
+
+
+            //int height = 80;
+            //int count = 0;
+            //for (var i = FavControl.FavList.Head; i!=null; i=i.NextforFav1)
+            //{
+            //    //MessageBox.Show("Heloo");
+            //    WebFavList.Add(i);
+            //    Label label = new Label()
+            //    {
+            //        Tag = count
+            //    };
+            //    label.Text = ((Webcom)i).Title + " --- Page number : " + i.Count.ToString() + "\nDate Time: " + ((Webcom)i).DateTime1.ToString("dd/MM/yyyy"); //+  ((Webcom)i).Datatime2.ToString(" HH:mm:ss");
+            //    if (((Webcom)i).BookMark == true)
+            //    {
+            //        label.BackColor = Color.Yellow;
+            //    }
+            //    else
+            //    {
+            //        label.BackColor = Color.White;
+            //    }
+            //    //WebFavList.Add(i);
+            //    label.AutoSize = true;
+            //    label.Location = new System.Drawing.Point(0, height);
+            //    height += 50;
+            //    label.Visible = true;
+            //    this.Controls.Add(label);
+            //    label.MouseUp += Label_Click;
+            //    count++;
+            //}
         }
        
         private void Label_Click(object sender, MouseEventArgs e)

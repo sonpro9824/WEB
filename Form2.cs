@@ -16,6 +16,7 @@ namespace WEB
     public delegate void Resizeform();
     public partial class Form2 : Form
     {
+        List<string> ThuMuc = new List<string>();
         private Timer resizeTimer1 = new Timer();
         private Timer resizeTimer2;
         private bool resize1 = false;
@@ -195,6 +196,7 @@ namespace WEB
         }
         private void Form2_Load(object sender, EventArgs e)
         {
+            panel_thuMuc.Hide();
             //button_bookmark.BackColor = Color.White;
             truyenDataform2(label1.Text);
             //Webcom webcom = Webcom;
@@ -445,20 +447,24 @@ namespace WEB
         /// <param name="e"></param>
         private void button_bookmark_Click_1(object sender, EventArgs e)
         {
-            if (button_bookmark.IconColor==Color.Black)
-            {
-                //button_bookmark.BackColor = Color.Yellow;
-                Webcom.BookMark = true;
-                FavControl.FavList.AddFav(ref Webcom);
-                CheckBookmark();
-            }
-            else
-            {
-                //button_bookmark.BackColor=Color.White;
-                Webcom.BookMark = false;
-                FavControl.FavList.RemoveFav(ref Webcom);
-                CheckBookmark();
-            }
+            panel_thuMuc.Show();
+            Webcom.BookMark = true;
+            FavControl.FavList.AddFav(ref Webcom);
+            CheckBookmark();
+            //if (button_bookmark.IconColor==Color.Black)
+            //{
+            //    //button_bookmark.BackColor = Color.Yellow;
+            //    Webcom.BookMark = true;
+            //    FavControl.FavList.AddFav(ref Webcom);
+            //    CheckBookmark();
+            //}
+            //else
+            //{
+            //    //button_bookmark.BackColor=Color.White;
+            //    Webcom.BookMark = false;
+            //    FavControl.FavList.RemoveFav(ref Webcom);
+            //    CheckBookmark();
+            //}
             //MessageBox.Show(Webcom.BookMark.ToString());
         }
         /// <summary>
@@ -522,6 +528,70 @@ namespace WEB
             Webcom.DateTime1 = dateTimePicker1.Value;
             //System.Windows.MessageBox.Show("Date set!", "Notice!");
             //System.Windows.MessageBox.Show(Webcom.DateTime1.Hour.ToString() + Webcom.DateTime1.Minute.ToString() + Webcom.DateTime1.Second.ToString());
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            panel_thuMuc.Hide();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_xong_Click(object sender, EventArgs e)
+        {
+            if(textBox_thuMuc.Text == string.Empty && comboBox1.SelectedIndex == -1)
+            {
+                Webcom.TenThuMuc = " ";
+            }
+            else if(textBox_thuMuc.Text != string.Empty )
+            {
+                string s = string.Empty;
+                
+                foreach(var i in ThuMuc)
+                {
+                    if(i == textBox_thuMuc.Text)
+                    {
+                        s = i;
+                    }
+                }
+                if(s == string.Empty)
+                {
+                    ThuMuc.Add(textBox_thuMuc.Text);
+                    comboBox1.Items.Add(textBox_thuMuc.Text);
+                }
+
+                Webcom.TenThuMuc = textBox_thuMuc.Text;
+            }
+            else
+            {
+                Webcom.TenThuMuc = comboBox1.SelectedItem.ToString();
+            }           
+            Webcom.BookMark = true;
+            FavControl.FavList.AddFav(ref Webcom);
+            CheckBookmark();
+            panel_thuMuc.Hide();
+            textBox_thuMuc.Clear();
+        }
+
+        private void button_xoa_Click(object sender, EventArgs e)
+        {
+            Webcom.BookMark = false;
+            FavControl.FavList.RemoveFav(ref Webcom);
+            CheckBookmark();
+            panel_thuMuc.Hide();
+        }
+
+        private void textBox_thuMuc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
   
