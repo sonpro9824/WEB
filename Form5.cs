@@ -41,6 +41,8 @@ namespace WEB
             int xG = 10;
             int yG = 50;
             Webcom i = FavControl.FavList.Head;
+
+            
             while (i != null)
             {
                 GroupBox group = new GroupBox();
@@ -49,7 +51,8 @@ namespace WEB
                 group.Font = new Font("Calibri", 14, FontStyle.Bold);
                 int x = 10;
                 int y = 40;
-
+                int xSingle = 10;
+                int ySingle = 80;
                 while(i != null && i.TenThuMuc == name)
                 {
                     WebFavList.Add(i);
@@ -69,19 +72,35 @@ namespace WEB
                     }
                     //WebFavList.Add(i);
                     label.AutoSize = true;
-                    label.Location = new System.Drawing.Point(x,y);
+                    
                     label.Visible = true;
                     label.Font = new Font("Calibri", 12, FontStyle.Regular);
                     
                     label.MouseUp += Label_Click;
-                    group.Controls.Add(label);
-                    y += 70;
+                    if(name == " ")
+                    {
+                        label.Location = new System.Drawing.Point(xSingle, ySingle);
+                        this.Controls.Add(label);
+                        ySingle += 70;
+                        yG = label.Bottom + 20;
+                    }
+                    else
+                    {
+                        label.Location = new System.Drawing.Point(x, y);
+                        group.Controls.Add(label);
+                        y += 70;
+                    }
+                    
                     i = i.NextforFav1;
                 }
-                group.AutoSize = true;
-
-                this.Controls.Add(group);
-                yG = group.Bottom + 20;
+                if(name != " ")
+                {
+                    group.AutoSize = true;
+                    this.Controls.Add(group);
+                    yG = group.Bottom + 20;
+                }
+                
+                
                 if (i != null)
                     name = i.TenThuMuc;
             }

@@ -447,6 +447,12 @@ namespace WEB
         /// <param name="e"></param>
         private void button_bookmark_Click_1(object sender, EventArgs e)
         {
+            if (button_bookmark.IconColor == Color.Yellow)
+                label9.Text = "Chỉnh sửa dấu trang";
+            else
+            {
+                label9.Text = "Đã thêm dấu trang";
+            }
             panel_thuMuc.Show();
             Webcom.BookMark = true;
             FavControl.FavList.AddFav(ref Webcom);
