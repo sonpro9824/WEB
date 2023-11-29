@@ -550,9 +550,9 @@ namespace WEB
         {
             if(textBox_thuMuc.Text == string.Empty && comboBox1.SelectedIndex == -1)
             {
-                //Webcom.TenThuMuc = " ";
-                MessageBox.Show("You can not unnamed your folder!", "Notice");
-                return;
+                Webcom.TenThuMuc = " ";
+                /*MessageBox.Show("You can not unnamed your folder!", "Notice");
+                return;*/
             }
             else if(textBox_thuMuc.Text != string.Empty )
             {
